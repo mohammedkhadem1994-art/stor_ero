@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dean | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="qrcode.js?v=v208"></script>
+  <script defer src="jsqr.js?v=v208"></script>
+  <script defer src="paycode.js?v=v208"></script>
+  <script defer src="reviews.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="scoped-stats.js?v=v208"></script>
+  <script defer src="trusted.js?v=v208"></script>
+  <script defer src="shares.js?v=v208"></script>
+  <script defer src="collab.js?v=v208"></script>
+  <script defer src="look.js?v=v208"></script>
+  <script defer src="dean.js?v=v208"></script>
+  <script defer src="monthly.js?v=v208"></script>
+</head>
+<body data-kyc="required" data-push data-verify data-support data-require-role="dean">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Dean</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html">Store</a>
+      <a id="auth-link" href="login.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">DEAN</span>
+        <h1>Supervisors, approvals &amp; debts</h1>
+        <p>You lead a group of supervisors. You approve the sellers and delivery partners they bring in, and you follow the debts that were paid and the ones still waiting. You keep 25 % of the site's fee on their orders.</p>
+      </div>
+      <button type="button" class="small-button rate-site" title="Rate the store">⭐ Rate the store</button>
+    </section>
+
+    <section class="admin-stats" id="dn-stats"></section>
+
+    <nav class="role-tabs" aria-label="Dean sections">
+      <button type="button" class="role-tab active" data-tab="people">People to approve</button>
+      <button type="button" class="role-tab" data-tab="sups">My supervisors</button>
+      <button type="button" class="role-tab" data-tab="trusted">Trusted partners</button>
+      <button type="button" class="role-tab" data-tab="shares">Profit sharing</button>
+      <button type="button" class="role-tab" data-tab="monthly">Monthly tables</button>
+      <button type="button" class="role-tab" data-tab="debts">Debts</button>
+      <button type="button" class="role-tab" data-tab="stats">Statistics</button>
+    </nav>
+
+    <section class="admin-panel role-pane" id="pane-people"><div data-collab="dean"></div><div id="dn-people"></div></section>
+    <section class="admin-panel role-pane" id="pane-trusted" hidden><div class="panel-heading"><h2>Trusted delivery partners</h2><p>Sellers brought in by your supervisors name delivery partners they trust. The supervisor decides first, then you.</p></div><div id="dn-trusted"></div></section>
+    <section class="admin-panel role-pane" id="pane-sups" hidden>
+      <div class="panel-heading"><h2>Propose a supervisor</h2>
+        <p>Write the email of a person who already has an account. The owner must approve before he becomes your supervisor. A supervisor only supervises: he cannot be a seller or a delivery partner.</p></div>
+      <form id="dn-propose" class="inline-form"><input type="email" id="dn-email" placeholder="Email of the person" required aria-label="Email"> <button class="button button-teal" type="submit">Send to the owner</button></form>
+      <p id="dn-message" class="form-message" role="status"></p>
+      <div id="dn-sups"></div>
+    </section>
+    <section class="admin-panel role-pane" id="pane-shares" hidden><div data-shares></div></section>
+    <section class="admin-panel role-pane" id="pane-monthly" hidden><div data-monthly></div></section>
+    <section class="admin-panel role-pane" id="pane-debts" hidden><div id="dn-debts"></div></section>
+    <section class="admin-panel role-pane" id="pane-stats" hidden><div class="panel-heading"><h2>Statistics of my group</h2><p>Only the people your supervisors brought in.</p></div><div id="dn-statistics"></div></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo · <a href="privacy.html">Privacy</a> <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span></p>
+  </footer>
+</body>
+</html>

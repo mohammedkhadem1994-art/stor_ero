@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supervisor | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="qrcode.js?v=v208"></script>
+  <script defer src="jsqr.js?v=v208"></script>
+  <script defer src="paycode.js?v=v208"></script>
+  <script defer src="reviews.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="chat.js?v=v208"></script>
+  <script defer src="report-templates.js?v=v208"></script>
+  <script defer src="scoped-stats.js?v=v208"></script>
+  <script defer src="trusted.js?v=v208"></script>
+  <script defer src="shares.js?v=v208"></script>
+  <script defer src="look.js?v=v208"></script>
+  <script defer src="supervisor.js?v=v208"></script>
+  <script defer src="monthly.js?v=v208"></script>
+</head>
+<body data-kyc="required" data-push data-verify data-support data-require-role="supervisor">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Supervisor</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html">Store</a>
+      <a id="auth-link" href="login.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">SUPERVISOR</span>
+        <h1>Sales, deliveries &amp; debts</h1>
+        <p>Watch the marketplace: orders and sales, delivery partners and how far sellers are from the €1000 debt limit. This page is read-only.</p>
+      </div>
+      <button type="button" class="small-button rate-site" title="Rate the store">⭐ Rate the store</button>
+    </section>
+    <section class="picture-guide" aria-label="Supervisor work in pictures">
+      <h2 class="pg-title">Supervisor work in pictures</h2>
+      <ol class="pg-steps"><li><span class="pg-badge">1</span><span class="pg-icon" aria-hidden="true">🔗</span><strong>Share your link</strong><small>Send it to sellers and delivery partners.</small></li><li><span class="pg-badge">2</span><span class="pg-icon" aria-hidden="true">📊</span><strong>Watch the sales</strong><small>See each seller&#x27;s sales and debt.</small></li><li><span class="pg-badge">3</span><span class="pg-icon" aria-hidden="true">📋</span><strong>Report to the owner</strong><small>Write, draw your signature, add your stamp.</small></li><li><span class="pg-badge">4</span><span class="pg-icon" aria-hidden="true">💬</span><strong>Write to your people</strong><small>Open Messages and pick a seller.</small></li></ol>
+    </section>
+
+    <details class="role-guide">
+      <summary>Your guide: supervisor account</summary>
+      <div class="role-guide-body">
+        <p>A supervisor watches the marketplace and brings in new sellers and delivery partners. This account is given by the store owner, on the proposal of a dean: you cannot apply for it.</p>
+        <h3>What you can do</h3>
+      <ul>
+        <li>Watch sales, orders and invoices, the delivery partners, and every seller's debt.</li>
+        <li>Invite sellers and delivery partners with your personal links (send them by WhatsApp). Their dean (or the owner) approves each one.</li>
+        <li>Collect the site's fee from your delivery partners and keep your 15 % share. You pass the rest to your dean.</li>
+      </ul>
+        <h3>Avoid these mistakes</h3>
+        <ul>
+          <li>A supervisor only supervises: this account cannot also be a seller or a delivery partner. Use another email for that.</li>
+          <li>If something does not work, press Ctrl+F5 once, then write to the owner from the Messages button.</li>
+        </ul>
+      </div>
+    </details>
+
+    <section class="admin-stats">
+      <article class="admin-stat"><span>Orders</span><strong id="v-orders">0</strong></article>
+      <article class="admin-stat"><span>Delivered orders</span><strong id="v-sales">0</strong></article>
+      <article class="admin-stat"><span>In delivery</span><strong id="v-active">0</strong></article>
+      <article class="admin-stat"><span>Sellers' debt to the site (EUR)</span><strong id="v-debt">€0.00</strong></article>
+      <article class="admin-stat"><span>Site fees on these orders</span><strong id="v-payout">€0.00</strong></article>
+    </section>
+
+    <nav class="role-tabs" aria-label="Supervisor sections">
+      <button type="button" class="role-tab active" data-tab="sales">Sales &amp; orders</button>
+      <button type="button" class="role-tab" data-tab="couriers">Deliveries</button>
+      <button type="button" class="role-tab" data-tab="shares">Profit sharing</button>
+      <button type="button" class="role-tab" data-tab="monthly">Monthly table</button>
+      <button type="button" class="role-tab" data-tab="debts">Debts</button>
+      <button type="button" class="role-tab" data-tab="invite">Invite</button>
+      <button type="button" class="role-tab" data-tab="trusted">Trusted partners</button>
+      <button type="button" class="role-tab" data-tab="stats">Statistics</button>
+    </nav>
+
+    <section class="admin-panel role-pane" id="pane-sales"><div id="v-list"></div></section>
+    <section class="admin-panel role-pane" id="pane-couriers" hidden><div id="v-couriers"></div></section>
+    <section class="admin-panel role-pane" id="pane-invite" hidden>
+      <div class="panel-heading"><h2>Add collaborators: sellers, doctors, barbers, hotels, agencies, taxis and delivery partners</h2>
+        <p>Write the email of a person who already has an account on the site. Your dean (or the owner when you have no dean) approves him; then he applies as the kind of partner he is, and he is counted under you. An account that is already a seller or a delivery partner can not be added.</p></div>
+      <div id="v-invite"></div>
+      <h3 class="job-heading">People you invited</h3>
+      <div id="v-invited"></div>
+    </section>
+    <section class="admin-panel role-pane" id="pane-trusted" hidden><div class="panel-heading"><h2>Trusted delivery partners</h2><p>Sellers you brought in name delivery partners they trust. Your dean approves after you.</p></div><div id="v-trusted"></div></section>
+    <section class="admin-panel role-pane" id="pane-stats" hidden><div class="panel-heading"><h2>My statistics</h2><p>Only the people you brought in.</p></div><div id="v-statistics"></div></section>
+    <section class="admin-panel role-pane" id="pane-shares" hidden><div data-shares></div></section>
+    <section class="admin-panel role-pane" id="pane-monthly" hidden><div data-monthly></div></section>
+    <section class="admin-panel role-pane" id="pane-debts" hidden><div id="v-fees"></div><div id="v-debts"></div><h3 class="job-heading">Latest movements</h3><div id="v-ledger"></div></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo · <a href="privacy.html">Privacy</a> <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span></p>
+  </footer>
+</body>
+</html>

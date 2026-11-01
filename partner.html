@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join us | Plazavo</title>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Plazavo">
+  <meta property="og:title" content="انضم الآن كمتعاون | Join Plazavo"><meta property="og:description" content="Sellers, restaurants, pharmacies, doctors, barbers, hotels, travel agencies, taxis and delivery partners. سجّل حسابك الآن.">
+  <meta property="og:image" content="https://your-domain.example/og-join.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Plazavo: انضم الآن / Join now">
+  <meta property="og:url" content="https://your-domain.example/partner.html">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="انضم الآن كمتعاون | Join Plazavo"><meta name="twitter:description" content="Sellers, restaurants, pharmacies, doctors, barbers, hotels, travel agencies, taxis and delivery partners. سجّل حسابك الآن."><meta name="twitter:image" content="https://your-domain.example/og-join.jpg">
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="partner.js?v=v208"></script>
+  <script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add("embed");</script>
+</head>
+<body data-verify>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Sellers · Delivery partners</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html">Store</a>
+      <a id="auth-link" href="login.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="admin-main partner-main">
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">JOIN THE MARKETPLACE</span>
+        <h1>Sell or deliver with Plazavo</h1>
+        <p>Apply as a <strong>seller</strong> to list your products, or as a <strong>delivery partner</strong> to receive delivery requests near you. An administrator reviews every application.</p>
+      </div>
+    </section>
+
+    <section class="admin-panel join-picker-panel" aria-label="Choose how to join">
+      <h2>Choose how you want to join</h2>
+      <div class="join-grid" id="join-picker">
+      <a class="join-card" data-join="shop" href="partner.html?kind=shop"><span aria-hidden="true">🛍️</span><strong>Join as a seller</strong><small>Sell your products</small></a>
+      <a class="join-card" data-join="restaurant" href="partner.html?kind=restaurant"><span aria-hidden="true">🍽️</span><strong>Join as a restaurant</strong><small>Publish your meals</small></a>
+      <a class="join-card" data-join="pharmacy" href="partner.html?kind=pharmacy"><span aria-hidden="true">💊</span><strong>Join as a pharmacy</strong><small>Sell health products</small></a>
+      <a class="join-card" data-join="doctor" href="partner.html?kind=doctor"><span aria-hidden="true">🩺</span><strong>Join as a doctor</strong><small>Receive appointments</small></a>
+      <a class="join-card" data-join="barber" href="partner.html?kind=barber"><span aria-hidden="true">💈</span><strong>Join as a barber</strong><small>Bookings and walk-ins</small></a>
+      <a class="join-card" data-join="hotel" href="partner.html?kind=hotel"><span aria-hidden="true">🏨</span><strong>Join as a hotel</strong><small>Rooms and bookings</small></a>
+      <a class="join-card" data-join="agency" href="partner.html?kind=agency"><span aria-hidden="true">✈️</span><strong>Join as a travel agency</strong><small>Receive ticket requests</small></a>
+      <a class="join-card" data-join="taxi" href="partner.html?kind=taxi"><span aria-hidden="true">🚕</span><strong>Join as a taxi driver</strong><small>Receive ride requests</small></a>
+      <a class="join-card" data-join="courier" href="partner.html?kind=courier"><span aria-hidden="true">🛵</span><strong>Join as a delivery partner</strong><small>Deliver orders and earn</small></a>
+    </div>
+    </section>
+
+    <section class="admin-panel" id="direct-box" hidden>
+      <div class="panel-heading"><h2>Create your collaborator account</h2>
+        <p>No need to open a normal account first. Choose your email and password here, fill in your details below, and send. We email you a confirmation link: once you confirm it, your application is sent automatically and an administrator reviews it.</p></div>
+      <label for="d-email">Email address *</label>
+      <input id="d-email" type="email" autocomplete="email" maxlength="120">
+      <div class="form-two-columns">
+        <div><label for="d-password">Password * <small class="muted">(at least 8 characters)</small></label><input id="d-password" type="password" minlength="8" autocomplete="new-password"></div>
+        <div><label for="d-confirm">Confirm password *</label><input id="d-confirm" type="password" minlength="8" autocomplete="new-password"></div>
+      </div>
+      <div id="direct-kyc"></div>
+      <p class="muted">Already have an account? <a id="d-signin" href="login.html?next=partner.html">Sign in</a> and apply with it.</p>
+    </section>
+
+    <div id="partner-status"></div>
+
+    <section class="admin-panel" id="signin-needed" hidden>
+      <h2>Sign in first</h2>
+      <p class="muted">Create a free account (or sign in), then come back to this page to apply.</p>
+      <p>
+        <a class="button button-teal" href="login.html?next=partner.html">Sign in</a>
+        <a class="button button-secondary" href="register.html?next=partner.html">Create account</a>
+      </p>
+    </section>
+
+    <div id="partner-forms" class="admin-layout" hidden>
+      <div class="admin-panel" id="merchant-box">
+        <div class="panel-heading">
+          <h2>Become a seller</h2>
+          <p>Show your products in the store, accept orders and choose a delivery partner near you.</p>
+        </div>
+        <form id="merchant-form" novalidate>
+          <label for="m-kind" id="m-kind-label">Account type</label>
+          <select id="m-kind">
+            <option value="shop">Seller (products and orders)</option>
+            <option value="restaurant">Restaurant (meals and orders)</option>
+            <option value="pharmacy">Pharmacy (products and orders)</option>
+            <option value="doctor">Doctor (appointments, no products)</option>
+            <option value="agency">Travel agency (tickets, no products)</option>
+            <option value="taxi">Taxi driver (rides, no products)</option>
+            <option value="barber">Barber (bookings and walk-ins, no products)</option>
+            <option value="hotel">Hotel / lodging (rooms and nights, no products)</option>
+          </select>
+          <label for="m-name">Your full name *</label>
+          <input id="m-name" autocomplete="name" maxlength="100" required>
+          <label for="m-business" id="m-business-label">Shop / business name *</label>
+          <input id="m-business" maxlength="100" required>
+          <label for="m-phone">Phone *</label>
+          <input id="m-phone" type="tel" autocomplete="tel" maxlength="40" required>
+          <div class="form-two-columns">
+            <div><label for="m-country">Country *</label><input id="m-country" autocomplete="country-name" maxlength="80" required></div>
+            <div><label for="m-city">City *</label><input id="m-city" autocomplete="address-level2" maxlength="80" required></div>
+          </div>
+          <label for="m-address" id="m-address-label">Shop address *</label>
+          <input id="m-address" autocomplete="street-address" maxlength="200" required>
+          <label for="m-description" id="m-description-label">What do you sell?</label>
+          <textarea id="m-description" rows="3" maxlength="500"></textarea>
+          <p class="field-help"><button class="small-button use-location" type="button" data-prefix="m">Use my current location</button>
+            <span id="m-location" class="muted">Location not set (helps customers and delivery partners find you).</span></p>
+          <button class="button button-teal" type="submit">Send application</button>
+          <p id="m-message" class="form-message" role="status"></p>
+        </form>
+      </div>
+
+      <div class="admin-panel" id="courier-box">
+        <div class="panel-heading">
+          <h2>Become a delivery partner</h2>
+          <p>Receive delivery requests from sellers close to you, pick up the parcel and deliver it.</p>
+        </div>
+        <form id="courier-form" novalidate>
+          <label for="c-name">Your full name *</label>
+          <input id="c-name" autocomplete="name" maxlength="100" required>
+          <label for="c-phone">Phone *</label>
+          <input id="c-phone" type="tel" autocomplete="tel" maxlength="40" required>
+          <div class="form-two-columns">
+            <div><label for="c-country">Country *</label><input id="c-country" autocomplete="country-name" maxlength="80" required></div>
+            <div><label for="c-city">City *</label><input id="c-city" autocomplete="address-level2" maxlength="80" required></div>
+          </div>
+          <label for="c-address">Area / address</label>
+          <input id="c-address" maxlength="200">
+          <label for="c-maxweight">Heaviest load I can carry (kg)</label>
+          <input id="c-maxweight" type="number" min="0" max="1000" step="0.1" inputmode="decimal" placeholder="empty = no limit">
+          <label for="c-vehicle">Vehicle</label>
+          <select id="c-vehicle">
+            <option>Motorbike</option><option>Car</option><option>Van</option><option>Bicycle</option><option>On foot</option>
+          </select>
+          <p class="field-help"><button class="small-button use-location" type="button" data-prefix="c">Use my current location</button>
+            <span id="c-location" class="muted">Location not set (sellers choose the partner closest to them).</span></p>
+          <button class="button button-teal" type="submit">Send application</button>
+          <p id="c-message" class="form-message" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo · <a href="privacy.html">Privacy</a> <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span></p>
+  </footer>
+</body>
+</html>

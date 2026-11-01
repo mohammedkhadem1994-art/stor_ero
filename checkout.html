@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="payment-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="adspots.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="invoice.js?v=v208"></script>
+  <script defer src="app.js?v=v208"></script>
+</head>
+<body data-verify="soft">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span>
+    </a>
+    <nav aria-label="Main"><a href="guide.html">How it works</a><a href="index.html#products">Products</a>
+      <a class="cart-link" href="checkout.html">Cart (<span id="cart-count">0</span>)</a>
+      <a id="auth-link" href="login.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="checkout-main">
+    <div id="checkout-view">
+      <div class="checkout-heading">
+        <p class="eyebrow">CHECKOUT</p>
+        <h1>Your cart</h1>
+        <p>Choose how you would like to pay.</p>
+      </div>
+
+      <div class="checkout-layout">
+        <section class="panel">
+          <h2>Order summary</h2>
+          <div id="cart-items"></div>
+          <div class="total-row">
+            <span>Total</span>
+            <strong id="cart-total">€0.00</strong>
+          </div>
+          <div class="total-row" id="delivery-row" hidden>
+            <span>Delivery</span>
+            <strong id="delivery-fee">€0.00</strong>
+          </div>
+          <div class="total-row grand-row" id="grand-row" hidden>
+            <span>To pay</span>
+            <strong id="grand-total">€0.00</strong>
+          </div>
+        </section>
+
+        <section class="panel" id="billing-panel">
+          <h2>Billing details</h2>
+          <form id="checkout-form" novalidate>
+            <label for="checkout-name">Full name *</label>
+            <input id="checkout-name" autocomplete="name" required>
+
+            <label for="checkout-email">Email address *</label>
+            <input id="checkout-email" type="email" autocomplete="email" required>
+
+            <div class="form-two-columns">
+              <div>
+                <label for="checkout-phone">Phone</label>
+                <input id="checkout-phone" type="tel" autocomplete="tel">
+              </div>
+              <div>
+                <label for="checkout-company">Company (optional)</label>
+                <input id="checkout-company" autocomplete="organization">
+              </div>
+            </div>
+
+            <label for="checkout-taxid">Tax / VAT number (optional)</label>
+            <input id="checkout-taxid">
+
+            <div class="form-two-columns">
+              <div>
+                <label for="checkout-country">Country *</label>
+                <input id="checkout-country" autocomplete="country-name" required>
+              </div>
+              <div>
+                <label for="checkout-city">City *</label>
+                <input id="checkout-city" autocomplete="address-level2" required>
+              </div>
+            </div>
+
+            <label for="checkout-address">Street address *</label>
+            <input id="checkout-address" autocomplete="street-address" required>
+
+            <p class="small-note"><button type="button" class="small-button" id="checkout-locate">Share my location</button>
+              <span id="checkout-where" class="muted"></span> — helps the delivery partner find you.</p>
+
+            <div class="coupon-box" id="coupon-box" hidden>
+              <label for="coupon-code">Discount code</label>
+              <div class="coupon-row"><input id="coupon-code" type="text" maxlength="24" autocomplete="off" placeholder="Code"><button type="button" class="button button-light" id="coupon-apply">Apply</button></div>
+              <p class="form-message" id="coupon-msg" role="status"></p>
+            </div>
+            <fieldset class="payment-methods" id="speed-fieldset" hidden>
+              <legend>Delivery speed</legend>
+              <div id="speed-options" class="speed-options"></div>
+              <p class="small-note">The delivery fee is paid in cash to the delivery partner when the parcel arrives. Each delivery partner sets his own price.</p>
+            </fieldset>
+
+            <fieldset class="payment-methods">
+              <legend>Payment method</legend>
+              <fieldset id="pay-currency" class="pay-currency" hidden><legend>Pay in</legend>
+                <label><input type="radio" name="paycur" value="EUR" checked> Euro (€)</label>
+                <label><input type="radio" name="paycur" value="USD"> US dollar ($)</label>
+                <label><input type="radio" name="paycur" value="GBP"> British pound (£)</label></fieldset>
+              <div id="payment-options"></div>
+              <p id="payment-hint" class="small-note"></p>
+            </fieldset>
+            <div id="paypal-container" hidden></div>
+
+            <button id="place-order" class="button button-teal full-width" type="submit" disabled>Place order &amp; get invoice</button>
+            <p id="checkout-message" class="form-message" role="status"></p>
+            <p class="small-note">Card and wallet details are handled by the payment provider — they never reach this website.</p>
+          </form>
+        </section>
+
+        <section class="panel" id="signin-panel" hidden>
+          <h2>Sign in to place your order</h2>
+          <p class="muted">Your orders and invoices are saved to your account, so please sign in or create a free account first. Your cart is kept.</p>
+          <p>
+            <a class="button button-teal" href="login.html?next=checkout.html">Sign in</a>
+            <a class="button button-secondary" href="register.html?next=checkout.html">Create account</a>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <div id="success-view" class="success-main success-wide" hidden>
+      <div class="no-print">
+        <div class="success-icon" aria-hidden="true">✓</div>
+        <p class="eyebrow" id="success-eyebrow">ORDER RECEIVED</p>
+        <h1>Thank you for your order!</h1>
+        <p>Your invoice is below. You can print it or save it as a PDF, and find it later in your account under <strong>Orders &amp; invoices</strong>.</p>
+        <div id="payment-instructions" class="payment-box" hidden></div>
+        <div class="reference-box">
+          <span>Invoice number</span>
+          <strong id="order-reference"></strong>
+        </div>
+        <div class="success-actions">
+          <button id="print-now" class="button button-teal" type="button">Print / save as PDF</button>
+          <a id="invoice-page-link" class="button button-secondary" href="invoice.html">Open invoice page</a>
+          <a class="button button-secondary" href="account.html#orders">My orders</a>
+          <a class="button button-secondary" href="index.html">Back to the store</a>
+        </div>
+      </div>
+
+      <div id="invoice-container"></div>
+    </div>
+  <div class="ad-slot ad-slot-bottom" data-ad-slot="checkout" hidden><div class="ad-list"></div></div>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Your online marketplace</small></span>
+    </a>
+    <span>© <span data-year></span> Plazavo</span>
+    <a href="privacy.html">Privacy</a> <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span> <span class="demo-label">DEMO VERSION</span>
+  </footer>
+  <script defer src="coupon.js?v=v208"></script>
+</body>
+</html>

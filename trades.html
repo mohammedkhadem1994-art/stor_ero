@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Craftsmen &amp; trades | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="trades.js?v=v208"></script>
+</head>
+<body data-push>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span>
+    </a>
+    <nav aria-label="Main"><a href="index.html#products">Store</a>
+      <a class="cart-link" href="checkout.html">Cart (<span id="cart-count">0</span>)</a>
+      <a id="auth-link" href="account.html">My account</a>
+    </nav>
+  </header>
+
+  <main class="account-main trades-main">
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">CRAFTSMEN &amp; TRADES</span>
+        <h1>Find a craftsman near you</h1>
+        <p>Plumbers, builders, electricians, painters and more. Choose your country, region and city, then call the person directly.</p>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="trades-search">
+      <div class="panel-heading trades-head"><div><h2>All craftsmen</h2><p>Everyone in one table. Filter by trade and place.</p></div><a class="button button-teal" id="t-join-toggle" href="#trades-mine">➕ Are you a craftsman? Join here</a></div>
+      <div class="trades-filters">
+        <div><label for="t-country">Country</label><select id="t-country"><option value="">All countries</option></select></div>
+        <div><label for="t-region">Region</label><select id="t-region"><option value="">All regions</option></select></div>
+        <div><label for="t-city">City</label><select id="t-city"><option value="">All cities</option></select></div>
+        <div><label for="t-trade">Trade</label><select id="t-trade"><option value="">All trades</option></select></div>
+        <div><label for="t-sort">Order by</label><select id="t-sort"><option value="">Trade</option><option value="rating">Best rated</option></select></div>
+        <div class="trades-q"><label for="t-q">Name</label><input id="t-q" type="search" placeholder="Search by name or trade…" autocomplete="off" maxlength="60"></div>
+      </div>
+      <p id="t-count" class="muted" role="status" aria-live="polite"></p>
+      <div id="t-list" class="trades-list"></div>
+    </section>
+
+    <section class="admin-panel" id="trades-mine">
+      <div class="panel-heading"><h2>Are you a craftsman? Add your trade</h2><p>Write your name, trade, phone and place once. After the owner approves it, people can find you and call you.</p></div>
+      <div id="t-guest" hidden><p class="muted">Sign in to add your trade.</p><a class="button button-teal" href="login.html">Sign in</a></div>
+      <form id="t-form" novalidate hidden>
+        <p id="t-status" class="muted" role="status"></p>
+        <div class="form-two-columns">
+          <div><label for="m-first">First name *</label><input id="m-first" maxlength="60" required></div>
+          <div><label for="m-last">Last name *</label><input id="m-last" maxlength="60" required></div>
+          <div><label for="m-trade">Trade *</label><select id="m-trade"></select></div>
+          <div id="m-other-box" hidden><label for="m-other">Your trade *</label><input id="m-other" maxlength="40"></div>
+          <div><label for="m-phone">Phone *</label><input id="m-phone" type="tel" maxlength="40" required></div>
+          <div><label for="m-country">Country *</label><input id="m-country" maxlength="60" required></div>
+          <div><label for="m-region">Region</label><input id="m-region" maxlength="60"></div>
+          <div><label for="m-city">City *</label><input id="m-city" maxlength="60" required></div>
+        </div>
+        <label for="m-about">A few words about your work (optional)</label>
+        <input id="m-about" maxlength="200" placeholder="e.g. Repairs, installations, 10 years of experience">
+        <button class="button button-teal" type="submit">Send my listing</button>
+        <button class="button button-light" type="button" id="m-delete" hidden>Remove my listing</button>
+        <p id="m-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo</p>
+    <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+</body>
+</html>

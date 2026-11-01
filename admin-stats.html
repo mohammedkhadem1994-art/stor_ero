@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Statistics | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="charts.js?v=v208"></script>
+  <script defer src="admin-stats.js?v=v208"></script>
+</head>
+<body data-push class="admin-page" data-require-role="admin">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Store management</small></span>
+    </a>
+    <nav aria-label="Main"><a href="index.html">View store</a>
+      <a href="admin.html">Dashboard</a>
+      <a class="active" href="admin-stats.html">Statistics</a>
+      <a href="#" id="admin-logout">Log out</a>
+    </nav>
+  </header>
+
+  <main class="admin-main viz-root">
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">STATISTICS</span>
+        <h1>Site statistics</h1>
+        <p>Visitors, registered people, orders and bookings.</p>
+      </div>
+      <a class="button button-secondary" href="admin.html">← Dashboard</a>
+    </section>
+
+    <p id="stats-message" class="form-message" role="status"></p>
+
+    <section class="stat-tiles" id="kpis" aria-label="Key numbers"></section>
+
+    <div class="range-row" role="group" aria-label="Period">
+      <span class="muted">Period</span>
+      <button type="button" class="chip range-btn" data-days="7">7 days</button>
+      <button type="button" class="chip range-btn active" data-days="30">30 days</button>
+      <button type="button" class="chip range-btn" data-days="90">90 days</button>
+    </div>
+
+    <div class="viz-grid">
+      <section class="viz-card wide"><header><h2>Visitors per day</h2><button type="button" class="small-button viz-table-btn" data-for="c-visits">Table</button></header><div id="c-visits"></div></section>
+      <section class="viz-card wide"><header><h2>New registrations per day</h2><button type="button" class="small-button viz-table-btn" data-for="c-regs">Table</button></header><div id="c-regs"></div></section>
+      <section class="viz-card"><header><h2>Accounts by type</h2><button type="button" class="small-button viz-table-btn" data-for="c-types">Table</button></header><div id="c-types"></div></section>
+      <section class="viz-card"><header><h2>Orders by state</h2><button type="button" class="small-button viz-table-btn" data-for="c-orders">Table</button></header><div id="c-orders"></div></section>
+      <section class="viz-card"><header><h2>Payment methods</h2><button type="button" class="small-button viz-table-btn" data-for="c-pay">Table</button></header><div id="c-pay"></div></section>
+      <section class="viz-card"><header><h2>Bookings by service</h2><button type="button" class="small-button viz-table-btn" data-for="c-appt">Table</button></header><div id="c-appt"></div></section>
+    </div>
+
+    <section class="admin-panel" id="money-panel">
+      <div class="panel-heading"><h2>💰 Site earnings &amp; sales</h2><p>What the site earns (commissions on delivered orders and fees on finished bookings), what is sold and what sellers still owe. The numbers follow the period chosen above.</p></div>
+      <section class="stat-tiles" id="money-kpis" aria-label="Earnings"></section>
+      <div class="viz-grid">
+        <section class="viz-card wide"><header><h2>Site earnings per day</h2><button type="button" class="small-button viz-table-btn" data-for="c-earn">Table</button></header><div id="c-earn"></div></section>
+        <section class="viz-card wide"><header><h2>Orders and sales per day</h2><button type="button" class="small-button viz-table-btn" data-for="c-sales">Table</button></header><div id="c-sales"></div></section>
+        <section class="viz-card"><header><h2>Earnings by source</h2><button type="button" class="small-button viz-table-btn" data-for="c-src">Table</button></header><div id="c-src"></div></section>
+        <section class="viz-card"><header><h2>Sales by payment method</h2><button type="button" class="small-button viz-table-btn" data-for="c-paysales">Table</button></header><div id="c-paysales"></div></section>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="credit-panel" hidden>
+      <div class="panel-heading"><h2>💳 Credit top-ups</h2><p>Credit the site issued to customers and sellers (cash through supervisors, manual), how it is used, and how much is still held in accounts.</p></div>
+      <section class="stat-tiles" id="credit-kpis" aria-label="Credit"></section>
+      <div class="viz-grid">
+        <section class="viz-card wide"><header><h2>Credit issued per day</h2><button type="button" class="small-button viz-table-btn" data-for="c-topup">Table</button></header><div id="c-topup"></div></section>
+        <section class="viz-card"><header><h2>Top-ups by source</h2><button type="button" class="small-button viz-table-btn" data-for="c-topsrc">Table</button></header><div id="c-topsrc"></div></section>
+        <section class="viz-card"><header><h2>How credit is used</h2><button type="button" class="small-button viz-table-btn" data-for="c-credit-use">Table</button></header><div id="c-credit-use"></div></section>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="growth-panel">
+      <div class="panel-heading"><h2>🧭 Following the growth</h2><p>From visitor to customer, how orders and bookings end, and what needs your attention.</p></div>
+      <section class="stat-tiles" id="growth-kpis" aria-label="Growth"></section>
+      <div class="viz-grid">
+        <section class="viz-card"><header><h2>From visitor to delivered order</h2><button type="button" class="small-button viz-table-btn" data-for="c-funnel">Table</button></header><div id="c-funnel"></div></section>
+        <section class="viz-card"><header><h2>Bookings by state</h2><button type="button" class="small-button viz-table-btn" data-for="c-appt-state">Table</button></header><div id="c-appt-state"></div></section>
+        <section class="viz-card wide"><header><h2>Bookings per day</h2><button type="button" class="small-button viz-table-btn" data-for="c-appt-day">Table</button></header><div id="c-appt-day"></div></section>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="lists-panel">
+      <div class="panel-heading"><h2>🏆 Top lists</h2><p>In the chosen period.</p></div>
+      <div class="lists-grid">
+        <div><h3>Best sellers (by sales)</h3><div id="top-sellers"></div></div>
+        <div><h3>Best-selling products</h3><div id="top-products"></div></div>
+        <div><h3>Sellers who owe the site</h3><div id="top-debts"></div></div>
+        <div><h3>Most active customers</h3><div id="top-customers"></div></div>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="daily-panel">
+      <div class="panel-heading"><h2>🗓️ Daily report</h2><p>One line per day for the chosen period. Download it to follow the site in a spreadsheet.</p></div>
+      <p><button type="button" class="small-button" id="daily-csv">⬇ Download CSV</button></p>
+      <div id="daily-table"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo · Admin area</p>
+    <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+</body>
+</html>

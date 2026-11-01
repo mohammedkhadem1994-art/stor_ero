@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Taxi | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="adspots.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+    <script defer src="doctors.js?v=v208"></script>
+</head>
+<body data-push data-service="taxi">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span>
+    </a>
+    <nav aria-label="Main"><a href="services.html">Services</a><a href="index.html#products">Store</a>
+      <a class="cart-link" href="checkout.html">Cart (<span id="cart-count">0</span>)</a>
+      <a id="auth-link" href="account.html">My account</a>
+    </nav>
+  </header>
+
+  <main class="account-main doctors-main">
+    <div class="ad-slot ad-slot-top" data-ad-slot="taxi" hidden><div class="ad-list"></div></div>
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">TAXI</span>
+        <h1>Rent a taxi</h1>
+        <p>Choose a taxi driver, write where to pick you up and where you go. The driver answers with the price and the pick-up hour.</p>
+        <p><a class="button button-secondary" href="partner.html?kind=taxi">Are you a taxi driver? Join the site</a></p>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="dr-signin" hidden>
+      <h2>Sign in first</h2>
+      <p class="muted">Create a free account (or sign in) to book a taxi.</p>
+      <p><a class="button button-teal" href="login.html?next=doctors.html">Sign in</a>
+        <a class="button button-secondary" href="register.html?next=doctors.html">Create account</a></p>
+    </section>
+
+    <section class="admin-panel" id="dr-book">
+      <div class="panel-heading"><h2>New ride request</h2></div>
+      <form id="dr-form" novalidate>
+        <label for="dr-doctor">Taxi driver *</label>
+        <select id="dr-doctor"><option value="">Loading…</option></select>
+        <div class="form-two-columns">
+          <div><label for="dr-first">First name *</label><input id="dr-first" maxlength="60" autocomplete="given-name" required></div>
+          <div><label for="dr-last">Last name *</label><input id="dr-last" maxlength="60" autocomplete="family-name" required></div>
+        </div>
+                <div class="form-two-columns">
+          <div><label for="dr-from">Pick-up place *</label><input id="dr-from" maxlength="100" required></div>
+          <div><label for="dr-to">Destination *</label><input id="dr-to" maxlength="100" required></div>
+        </div>
+        <div class="form-two-columns">
+          <div><label for="dr-wanted">Hour you want the taxi *</label><input id="dr-wanted" type="time" required></div>
+          <div><label for="dr-seats">Passengers *</label><input id="dr-seats" type="number" min="1" max="9" value="1" required></div>
+        </div>
+<div class="form-two-columns">
+          <div><label for="dr-phone">Phone *</label><input id="dr-phone" type="tel" maxlength="40" autocomplete="tel" required></div>
+          <div><label for="dr-day">Day of the ride *</label><input id="dr-day" type="date" required></div>
+        </div>
+        <div id="dr-slots-box" hidden>
+          <label>Choose a free hour *</label>
+          <div id="dr-slots" class="slot-picker" role="radiogroup" aria-label="Free hours"></div>
+          <p id="dr-slots-note" class="muted" role="status"></p>
+          <button type="button" class="small-button" id="dr-wait" hidden>Tell me if an hour is freed</button>
+        </div>
+        <label for="dr-reason">Reason (optional)</label>
+        <input id="dr-reason" maxlength="300">
+        <button class="button button-teal" type="submit">Ask for the taxi</button>
+        <p id="dr-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="admin-panel" id="dr-mine" hidden>
+      <div class="panel-heading"><h2>My rides</h2><p>The price and the pick-up hour appear here when the driver accepts.</p></div>
+      <div id="dr-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo</p>
+    <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Dashboard | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="adspots.js?v=v208"></script>
+  <script defer src="qrcode.js?v=v208"></script>
+  <script defer src="jsqr.js?v=v208"></script>
+  <script defer src="paycode.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="chat.js?v=v208"></script>
+  <script defer src="admin.js?v=v208"></script>
+  <script defer src="trusted.js?v=v208"></script>
+  <script defer src="shares.js?v=v208"></script>
+  <script defer src="records.js?v=v208"></script>
+  <script defer src="collab.js?v=v208"></script>
+  <script defer src="admin-extra.js?v=v208"></script>
+  <script defer src="admin-qr.js?v=v208"></script>
+  <script defer src="admin-demo.js?v=v208"></script>
+  <script defer src="admin-focus.js?v=v208"></script>
+  <script defer src="monthly.js?v=v208"></script>
+</head>
+<body data-push class="admin-page" data-require-role="admin">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Store management</small></span>
+    </a>
+    <nav aria-label="Main"><a href="index.html">View store</a>
+      <a class="active" href="admin.html">Dashboard</a>
+      <a href="admin-stats.html">Statistics</a>
+      <a href="account.html">My account</a>
+      <a href="#" id="admin-logout">Log out</a>
+    </nav>
+  </header>
+
+  <main class="admin-main admin-compact">
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">STORE MANAGEMENT</span>
+        <h1>Admin dashboard</h1>
+        <p>Manage the staff (supervisors, sellers, delivery partners), watch orders and invoices, clear debts and keep the archive.</p>
+      </div>
+      <span class="heading-buttons"><a class="button button-secondary" href="admin-stats.html">📊 Statistics</a>
+      <a class="button button-teal" href="index.html">Open store ↗</a></span>
+    </section>
+    <section class="picture-guide" aria-label="Owner work in pictures">
+      <h2 class="pg-title">Owner work in pictures</h2>
+      <ol class="pg-steps"><li><span class="pg-badge">1</span><span class="pg-icon" aria-hidden="true">✅</span><strong>Approve people</strong><small>Check sellers and delivery partners.</small></li><li><span class="pg-badge">2</span><span class="pg-icon" aria-hidden="true">🛡</span><strong>Check the products</strong><small>Edit or delete a fake product.</small></li><li><span class="pg-badge">3</span><span class="pg-icon" aria-hidden="true">💶</span><strong>Record payments</strong><small>When a seller pays the site&#x27;s fee.</small></li><li><span class="pg-badge">4</span><span class="pg-icon" aria-hidden="true">⚙</span><strong>Use the switches</strong><small>Limits, requirements and the debt pause.</small></li><li><span class="pg-badge">5</span><span class="pg-icon" aria-hidden="true">📥</span><strong>Read the reports</strong><small>Supervisors&#x27; signed reports and messages.</small></li></ol>
+    </section>
+
+    <details class="role-guide">
+      <summary>Your guide: owner (admin) account</summary>
+      <div class="role-guide-body">
+        <p>The store owner manages the staff, approves sellers and delivery partners, watches invoices, records debt payments, keeps the archive, messages everybody and chooses which features and requirements are active. This account is created by the owner only.</p>
+      </div>
+    </details>
+
+    <section class="admin-stats">
+      <article class="admin-stat">
+        <span>Total products</span>
+        <strong id="total-products">0</strong>
+      </article>
+      <article class="admin-stat">
+        <span>Visible products</span>
+        <strong id="visible-products">0</strong>
+      </article>
+      <article class="admin-stat">
+        <span>Orders</span>
+        <strong id="total-orders">0</strong>
+      </article>
+      <article class="admin-stat">
+        <span>Revenue (EUR)</span>
+        <strong id="total-revenue">€0.00</strong>
+      </article>
+    </section>
+    <section class="admin-stats" id="visit-stats" aria-label="Visitors and followers">
+      <article class="admin-stat"><span>Visitors today</span><strong id="vs-today">0</strong></article>
+      <article class="admin-stat"><span>Visitors, 7 days</span><strong id="vs-7">0</strong></article>
+      <article class="admin-stat"><span>Visitors, 30 days</span><strong id="vs-30">0</strong></article>
+      <article class="admin-stat"><span>Board followers</span><strong id="vs-follow">0</strong><small class="muted" id="vs-follow-sub"></small></article>
+    </section>
+
+    <section class="admin-panel" id="preview-panel">
+      <div class="panel-heading">
+        <h2>Preview the pages</h2>
+        <p>See how each kind of page looks, to improve it. It is an empty sample: no real account is opened and no customer's or partner's private data is ever shown. Read only.</p>
+      </div>
+      <p class="preview-links">
+        <a class="small-button" href="merchant.html?as=shop" target="_blank" rel="noopener">Seller page</a>
+        <a class="small-button" href="merchant.html?as=restaurant" target="_blank" rel="noopener">Restaurant page</a>
+        <a class="small-button" href="merchant.html?as=pharmacy" target="_blank" rel="noopener">Pharmacy page</a>
+        <a class="small-button" href="merchant.html?as=doctor" target="_blank" rel="noopener">Doctor page</a>
+        <a class="small-button" href="merchant.html?as=agency" target="_blank" rel="noopener">Travel agency page</a>
+        <a class="small-button" href="merchant.html?as=taxi" target="_blank" rel="noopener">Taxi page</a>
+        <a class="small-button" href="merchant.html?as=barber" target="_blank" rel="noopener">Barber page</a>
+        <a class="small-button" href="merchant.html?as=hotel" target="_blank" rel="noopener">Hotel page</a>
+        <a class="small-button" href="courier.html?as=courier" target="_blank" rel="noopener">Delivery partner page</a>
+        <a class="small-button" href="supervisor.html?as=supervisor" target="_blank" rel="noopener">Supervisor page</a>
+        <a class="small-button" href="dean.html?as=dean" target="_blank" rel="noopener">Dean page</a>
+        <a class="small-button" href="account.html?as=customer" target="_blank" rel="noopener">Customer account page</a>
+      </p>
+    </section>
+
+    <section class="admin-panel admin-orders" id="partners-panel">
+      <div class="panel-heading">
+        <h2>Staff: sellers, delivery partners</h2>
+        <p>You decide who joins. Approve, reject or suspend each application. Suspending a seller also hides his products. Supervisors can invite people, but only you approve them.</p>
+      </div>
+      <label class="limit-field">Show<select id="partner-group" aria-label="Show"><option value="">Everyone</option><option value="none">No supervisor (outside the groups)</option></select></label>
+      <div id="admin-partners"></div>
+    </section>
+
+    <section class="admin-panel admin-orders" id="qrs-panel" hidden>
+      <div class="panel-heading">
+        <h2>QR codes of the Join us window</h2>
+        <p>One QR code for each kind of account in the Join us window. Each code opens the join page on that kind, so you can put each one in its own advertisement. Save one as a picture (PNG) or as a vector (SVG), or save all of them in one ZIP file.</p>
+      </div>
+      <p class="qrs-bar"><button type="button" class="small-button" id="qrs-zip">Download all (ZIP)</button> <button type="button" class="small-button" id="qrs-csv">List of links (CSV)</button></p>
+      <div id="qrs-list" class="qrs-grid"></div>
+      <div id="demo-box" class="demo-box"></div>
+    </section>
+
+        <section class="admin-panel admin-orders" id="reviews-panel">
+      <div class="panel-heading">
+        <h2>Customer reviews</h2>
+        <p>The latest reviews of the site and of products. Remove an unfair or abusive one.</p>
+      </div>
+      <div id="admin-reviews"></div>
+      <p id="reviews-message" class="form-message" role="status"></p>
+    </section>
+
+<div class="admin-duo"><div class="admin-duo-in">
+    <section class="admin-panel admin-orders" id="deans-panel">
+      <div class="panel-heading">
+        <h2>Deans</h2>
+        <p>A dean leads a group of supervisors. He proposes supervisors (you approve them) and approves the sellers and delivery partners his supervisors bring in. The site's fee is shared: normally you 60 %, the dean 25 %, the supervisor 15 %. You can give each dean and each supervisor his own percentage in the table of the delivery fee chain. A dean sees only his supervisors and the people under them, never your share. The person must already have an account, and cannot be a seller or a delivery partner.</p>
+      </div>
+      <form id="dean-form" class="inline-form">
+        <input id="dean-email" type="email" placeholder="dean@example.com" required>
+        <button type="submit" class="button button-teal">Appoint dean</button>
+      </form>
+      <p id="dean-message" class="form-message" role="status"></p>
+      <div id="admin-deans"></div>
+      <div data-collab="admin"></div>
+      <h3 class="subhead">Supervisors proposed by deans</h3>
+      <div id="admin-proposals"></div>
+    </section>
+
+    <section class="admin-panel admin-orders" id="supervisors-panel">
+      <div class="panel-heading">
+        <h2>Supervisors</h2>
+        <p>A supervisor only supervises: he watches sales, deliveries and debts, brings in sellers and delivery partners, and collects the site's fee from the delivery partners (he keeps his own percentage, 15 % unless you change it). He cannot be a seller or a delivery partner. Choose his dean in the list, or leave him directly under you.</p>
+      </div>
+      <form id="supervisor-form" class="inline-form">
+        <input id="supervisor-email" type="email" placeholder="supervisor@example.com" required>
+        <button type="submit" class="button button-teal">Appoint supervisor</button>
+      </form>
+      <p id="supervisor-message" class="form-message" role="status"></p>
+      <div id="admin-supervisors"></div>
+    </section>
+    </div></div>
+
+    <section class="admin-panel admin-orders" id="shares-panel">
+      <div data-shares></div>
+    </section>
+
+    <section class="admin-panel admin-orders" id="brought-panel">
+      <div class="panel-heading">
+        <h2>Who brought the partners</h2>
+        <p>How many partners each dean and each supervisor brought in, by kind of account. Only numbers: no income and no private data.</p>
+      </div>
+      <div id="brought-box"><p class="muted">Loading…</p></div>
+    </section>
+
+    <section class="admin-panel admin-orders">
+      <div class="panel-heading">
+        <h2>Orders &amp; invoices</h2>
+        <p>Watch every order and invoice. Archive finished orders to keep the list tidy; they stay in the Archive tab.</p>
+      </div>
+      <nav class="role-tabs" id="orders-tabs" aria-label="Orders"></nav>
+      <div id="archive-clear"></div>
+      <div id="admin-orders-list"></div>
+    </section>
+
+    <section class="admin-panel admin-orders" id="settings-panel">
+      <div class="panel-heading">
+        <h2>Features &amp; requirements</h2>
+        <p>One row per kind of account. Press a button to switch it on (green ✓) or off (grey ✕). It is saved at once.</p>
+      </div>
+      <div id="admin-settings"></div>
+      <p id="settings-message" class="form-message" role="status"></p>
+    </section>
+
+    <section class="admin-panel admin-orders" id="trusted-panel">
+      <div class="panel-heading"><h2>Trusted delivery partners</h2><p>Requests with nobody above the seller (no supervisor, no dean) wait for you. You can also decide any request.</p></div>
+      <div id="trusted-owner"></div>
+    </section>
+
+
+    <section class="admin-panel admin-orders" id="artisans-panel">
+      <div class="panel-heading"><h2>Craftsmen directory</h2><p>People who wrote their trade (plumber, builder...). Approve a listing so customers can find it by country, region and city. Every change a person makes waits for you again.</p></div>
+      <div id="artisans-owner"></div>
+    </section>
+
+    <section class="admin-panel admin-orders" id="adspaces-panel">
+      <div class="panel-heading">
+        <h2>Advertising spaces (rent them)</h2>
+        <p>Seven places on the site can be rented to advertisers. Set the monthly price of each place, then add the ad of each advertiser with its dates: it appears by itself on the first day and disappears after the last day. Every ad shows the badge “Ad”. Views and clicks are counted so you can show the advertiser the result.</p>
+      </div>
+      <div id="adslots-box"></div>
+      <p class="form-message" id="adslots-message" role="status"></p>
+      <h3 class="subhead" id="adform-title">Add an ad</h3>
+      <div id="adform-box"></div>
+      <p class="form-message" id="adform-message" role="status"></p>
+      <h3 class="subhead">The ads</h3>
+      <div id="adlist-box"></div>
+    </section>
+
+    <section class="admin-panel admin-orders" id="ads-panel">
+      <div class="panel-heading">
+        <h2>Side banner (announcements)</h2>
+        <p>Up to 5 announcements shown under the games on the store's home page. Link and picture must start with https://. Leave a row empty to hide it.</p>
+      </div>
+      <div id="ads-form"></div>
+      <p class="form-message" id="ads-message" role="status"></p>
+    </section>
+
+
+
+
+    <section class="admin-panel admin-orders" id="users-panel">
+      <div class="panel-heading">
+        <h2>Users</h2>
+        <p>Every account. Block someone to stop him ordering, writing or listing products.</p>
+      </div>
+      <div class="debt-switch" id="debt-switch"></div>
+      <input id="users-search" type="search" placeholder="Search by name, email or phone…" autocomplete="off">
+      <div id="admin-users"></div>
+      <p id="users-message" class="form-message" role="status"></p>
+    </section>
+
+    <div class="admin-duo"><div class="admin-duo-in">
+    <section class="admin-panel admin-orders" id="records-panel">
+      <div class="panel-heading">
+        <h2>Security, backup &amp; month close</h2>
+        <p>Credit sending limits, what the owner and the staff did, a backup of the money records, and the monthly statements.</p>
+      </div>
+      <div data-records></div>
+    </section>
+
+    <section class="admin-panel admin-orders" id="erase-panel">
+      <div class="panel-heading">
+        <h2>Erase data</h2>
+        <p>Erase the data of one account (even your own), or of the whole site. Nothing can be brought back. Every account stays with its login and its role (seller, doctor, barber, dean, supervisor...), and so do the settings (fees, limits, switches), every credit balance and every debt.</p>
+      </div>
+      <div class="erase-row">
+        <label class="limit-field">Email of the account
+          <input type="email" id="erase-email" placeholder="name@example.com" autocomplete="off"></label>
+        <button type="button" class="button button-danger" id="erase-account">Erase this account's data</button>
+      </div>
+      <div class="erase-row">
+        <p class="muted">Erase every product, order, booking, message and record on the whole site. All the accounts keep their login and their role; the settings stay.</p>
+        <button type="button" class="button button-danger" id="erase-site">Erase the whole site</button>
+      </div>
+      <div class="erase-row">
+        <p class="muted">Erasing data keeps the credit (balances and history). To erase the credit, use this separate button and type your own email.</p>
+        <label class="limit-field">Your email, to confirm
+          <input type="email" id="erase-credit-email" placeholder="your login email" autocomplete="off"></label>
+        <button type="button" class="button button-danger" id="erase-credit">Erase all credit</button>
+      </div>
+      <p id="erase-message" class="form-message" role="status"></p>
+    </section>
+    </div></div>
+
+    <section class="admin-panel admin-orders" id="subs-panel">
+      <div class="panel-heading">
+        <h2>Subscription plans for partners</h2>
+        <p>Customers always use the site for free. Partners (sellers, restaurants, pharmacies, barbers and the others) may subscribe: each plan has a price per month and the number of photos it allows. The photos are the products of a seller or the haircut styles of a barber. When the partner has paid you, switch the plan on for his account below. When it ends, the account goes back to the number of its kind.</p>
+      </div>
+      <div id="subs-plans"></div>
+      <h3 class="subhead">Requests for more photos</h3>
+      <p class="muted">A partner writes how many more photos he needs. You decide how many to give (you may give less). The number is added to his limit.</p>
+      <div id="photo-requests"></div>
+      <h3 class="subhead">Switch a plan on for one account</h3>
+      <div class="feeplan-filter"><input type="search" id="subs-search" placeholder="Search by name or email" aria-label="Search"></div>
+      <div id="subs-accounts"></div>
+      <p id="subs-message" class="form-message" role="status"></p>
+    </section>
+
+<div class="admin-duo"><div class="admin-duo-in">
+    <section class="admin-panel admin-orders" id="plimit-panel">
+      <div class="panel-heading">
+        <h2>How many products each account may upload</h2>
+        <p>First table: the number for every account of a kind. Second table: a different number for one account only (it wins over its kind). Leave a field empty for no limit. A seller who is over his number cannot add products, and his newest extra products are hidden until he deletes some or you raise his number.</p>
+      </div>
+      <div id="plimit-kinds"></div>
+      <h3 class="subhead">One account at a time</h3>
+      <div class="feeplan-filter"><input type="search" id="plimit-search" placeholder="Search by name or email" aria-label="Search"></div>
+      <div id="plimit-accounts"></div>
+      <p id="plimit-message" class="form-message" role="status"></p>
+      <h3>Opening of registration</h3>
+      <p class="muted">Switch “Registration open” off in the list above to close sign-up. Write here the day and hour it opens: a visitor who tries to join then sees a friendly window with the date and a countdown, and the sign-up opens by itself when the date comes. Leave the date empty to say only “soon”.</p>
+      <p><label for="op-at">Opens on</label> <input id="op-at" type="datetime-local" style="width:230px"></p>
+      <p><label for="op-note">Message to the visitor (optional)</label><br><textarea id="op-note" rows="2" maxlength="300" style="width:100%;max-width:520px" placeholder="For example: Sellers and delivery partners first, customers one week later."></textarea></p>
+      <p><button type="button" class="small-button" id="op-save">Save</button> <button type="button" class="small-button delete-button" id="op-clear">Remove the date</button> <span class="muted" id="op-admin-note"></span></p>
+      <h3>Size of a product photo</h3>
+      <p class="muted">Every new product photo is made smaller until it weighs about this number. A smaller number keeps the free database lasting longer; a bigger one gives sharper photos. Photos already added stay as they are.</p>
+      <p><label for="img-kb">Size in KB (from 10 to 100)</label> <input id="img-kb" type="number" min="10" max="100" step="1" value="27" style="width:100px"> <button type="button" class="small-button" id="img-kb-save">Save</button> <span class="muted" id="img-kb-note"></span></p>
+    </section>
+
+    <section class="admin-panel admin-orders" id="join-panel">
+      <div class="panel-heading">
+        <h2>How many new accounts to accept</h2>
+        <p>Enter the most accounts you want of each kind. When the number is reached, that kind closes by itself for new applications (the form says it is full). Leave a field empty for no limit. Pharmacies stay closed until you enter a number. Every account counts, whatever its status, so remove refused applications you do not want counted.</p>
+      </div>
+      <div id="join-limits"></div>
+      <p id="join-message" class="form-message" role="status"></p>
+    </section>
+    </div></div>
+
+    <section class="admin-panel admin-orders" id="feeplan-panel">
+      <div class="panel-heading">
+        <h2>Site fees by kind of account</h2>
+        <p>One fee (0 to 25 %) for each kind of account. A new account pays nothing during its free start (the first months after it was created); after that its kind's fee applies. You can also give any single account its own fee, apart from the others. Seller, restaurant and pharmacy fees are added on top of the price they type; a doctor, barber, travel agency or taxi driver pays a fixed amount for each finished booking: one amount when the person booked in the app, another (for example 0) when the provider added the person himself. You can set a different amount for one clinic or one account in the table below. Raise the fees little by little.</p>
+      </div>
+      <div id="feeplan"></div>
+      <h3 class="subhead">Every account: age, free start and own fee</h3>
+      <div class="feeplan-filter"><select id="fa-kind" aria-label="Kind"></select> <input type="search" id="fa-search" placeholder="Search by name or email" aria-label="Search"></div>
+      <div id="feeplan-accounts"></div>
+      <p id="feeplan-message" class="form-message" role="status"></p>
+    </section>
+
+    <section class="admin-panel admin-orders" id="fees-panel">
+      <div class="panel-heading">
+        <h2>Site fees: partners → supervisors → site</h2>
+        <p>Each seller (shop, restaurant, pharmacy, doctor, barber…) keeps the site's sales fee himself; the delivery partner never carries it. He pays you directly, or hands it to his supervisor, who presses "I received the debt" (keeping his percentage, normally 15 %), hands the rest to the dean (who keeps his percentage, normally 25 %), and the dean hands you the remaining part. You see everything and can set the percentage of each account, or correct the amounts of one account, in the tables below. Record each step here (a seller without a supervisor pays you directly). Any way of paying is accepted.</p>
+      </div>
+      <div id="fee-chain"></div>
+      <p id="fee-message" class="form-message" role="status"></p>
+    </section>
+
+    <section class="admin-panel admin-orders" id="monthly-panel"><div data-monthly></div></section>
+
+    <section class="admin-panel admin-orders" id="debts-panel">
+      <div class="panel-heading">
+        <h2>Sellers' debts to the site</h2>
+        <p>The seller collects the money himself, so the site's fee on each delivered order is added to his debt. He pays you by bank transfer or by hand and you record it here, or he hands it to his supervisor, who records it. At the debt limit the seller is paused.</p>
+      </div>
+      <div id="admin-debts"></div>
+      <p id="debt-message" class="form-message" role="status"></p>
+      <div id="debt-history"></div>
+    </section>
+
+    <button type="button" class="inbox-fab" id="inbox-fab" aria-controls="messages-panel">Messages</button>
+    <section class="admin-panel admin-orders" id="reports-panel">
+      <div class="panel-heading">
+        <h2>Reports from supervisors <span class="count-pill" id="reports-new" hidden></span></h2>
+        <p>A supervisor writes about a store on your behalf. Each report carries his electronic signature. You also get a chat message and a phone alert.</p>
+      </div>
+      <div id="admin-reports"></div>
+    </section>
+
+    <section class="admin-panel admin-orders inbox-drawer" id="messages-panel">
+      <div class="panel-heading">
+        <h2>Messages</h2><button type="button" class="chat-close inbox-close" id="inbox-close" aria-label="Close">×</button>
+        <p>Write to everyone at once, or open a conversation with one person.</p>
+      </div>
+      <form id="broadcast-form" class="inline-form">
+        <select id="broadcast-group">
+          <option value="all">Everyone</option>
+          <option value="customers">All customers</option>
+          <option value="merchants">All sellers</option>
+          <option value="couriers">All delivery partners</option>
+        </select>
+        <input id="broadcast-text" maxlength="500" placeholder="Your message…" required>
+        <button type="submit" class="button button-teal">Send</button>
+      </form>
+      <p id="broadcast-message" class="form-message" role="status"></p>
+      <form id="start-chat-form" class="inline-form">
+        <input id="start-chat-email" type="email" placeholder="Write to one person: their email" required>
+        <button type="submit" class="small-button">Open chat</button>
+      </form>
+      <p id="start-chat-message" class="form-message" role="status"></p>
+      <div id="admin-threads"></div>
+    </section>
+
+    <section class="admin-layout monitor-layout">
+      <div class="admin-panel" id="edit-panel" hidden>
+        <div class="panel-heading">
+          <h2 id="form-heading">Edit product</h2>
+          <p>Correct what is inaccurate, or hide the product from the public store.</p>
+        </div>
+
+        <form id="product-form">
+          <input type="hidden" id="product-id">
+
+          <label for="product-name">Product name *</label>
+          <input id="product-name" required maxlength="100" placeholder="e.g. Wireless Mouse">
+
+          <div class="form-two-columns">
+            <div>
+              <label for="product-price">Price (€) *</label>
+              <input id="product-price" type="number" min="0" step="0.01" required placeholder="19.00">
+            </div>
+            <div>
+              <label for="product-category">Category</label>
+              <input id="product-category" maxlength="60" placeholder="Electronics">
+            </div>
+          </div>
+
+          <label for="product-description">Description *</label>
+          <textarea id="product-description" rows="4" required maxlength="1500" placeholder="Describe what the buyer receives..."></textarea>
+
+          <label for="product-image">Product image URL</label>
+          <input id="product-image" type="url" placeholder="https://example.com/product.jpg">
+          <p class="field-help">Use a publicly accessible image URL.</p>
+
+          <label for="product-video">Product video URL (optional)</label>
+          <input id="product-video" type="url" placeholder="https://www.youtube.com/watch?v=...">
+          <p class="field-help">Paste a YouTube watch link or a direct MP4 URL.</p>
+
+          <label class="visibility-control">
+            <input id="product-visible" type="checkbox" checked>
+            <span>Show this product in the public store</span>
+          </label>
+
+          <div class="admin-form-actions">
+            <button class="button button-teal" type="submit" id="save-button">Save product</button>
+            <button class="button button-secondary" type="button" id="cancel-edit" hidden>Cancel edit</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-panel">
+        <div class="panel-heading">
+          <h2>Products: monitor, edit or remove</h2>
+          <p>Sellers add the products. Check every listing here: edit one that is inaccurate, hide it, or delete it if it is fake or breaks the publishing rules.</p>
+        </div>
+        <p id="form-message" class="form-message" role="status"></p>
+        <div id="admin-product-list" class="admin-product-list"></div>
+      </div>
+    </section>
+
+    <aside class="admin-notice">
+      <strong>Security:</strong> products and orders are stored in Firebase. Only accounts listed in the
+      <code>admins</code> collection can change products or see every order, and this is enforced by the
+      Firestore rules, not by this page. Orders are demo orders until a payment provider is connected.
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo · Admin area · <span id="build-tag">v208</span></p>
+    <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+</body>
+</html>

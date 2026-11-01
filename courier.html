@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deliveries | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="reviews.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="chat.js?v=v208"></script>
+  <script defer src="jsqr.js?v=v208"></script>
+  <script defer src="look.js?v=v208"></script>
+  <script defer src="courier.js?v=v208"></script>
+</head>
+<body data-kyc="required" data-push data-verify data-support data-require-role="courier">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Delivery partner</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html">Store</a>
+      <a id="auth-link" href="login.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <p class="guide-link"><a class="button button-secondary" href="guide.html#courier"><span aria-hidden="true">📖</span> How to use this account</a></p>
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">DELIVERY PARTNER</span>
+        <h1>Your deliveries</h1>
+        <p>Sellers near you send delivery requests here. Accept one, pick up the parcel and deliver it.</p>
+      </div>
+      <button type="button" class="small-button rate-site" title="Rate the store">⭐ Rate the store</button>
+    </section>
+
+    <div id="account-banner"></div>
+    <section class="picture-guide" aria-label="Delivery work in pictures">
+      <h2 class="pg-title">Delivery work in pictures</h2>
+      <ol class="pg-steps"><li><span class="pg-badge">1</span><span class="pg-icon" aria-hidden="true">📝</span><strong>Fill in your details</strong><small>Name, phone and ID card.</small></li><li><span class="pg-badge">2</span><span class="pg-icon" aria-hidden="true">⏳</span><strong>Wait for approval</strong><small>The owner checks your account.</small></li><li><span class="pg-badge">3</span><span class="pg-icon" aria-hidden="true">🟢</span><strong>Say you are available</strong><small>Switch Available on.</small></li><li><span class="pg-badge">4</span><span class="pg-icon" aria-hidden="true">💶</span><strong>Set your prices</strong><small>One price for each speed.</small></li><li><span class="pg-badge">5</span><span class="pg-icon" aria-hidden="true">📦</span><strong>Accept a request</strong><small>Press Accept on a delivery.</small></li><li><span class="pg-badge">6</span><span class="pg-icon" aria-hidden="true">🏍</span><strong>Pick up and deliver</strong><small>Take it from the shop to the customer.</small></li><li><span class="pg-badge">7</span><span class="pg-icon" aria-hidden="true">💵</span><strong>Collect the cash</strong><small>Take your fee in cash if it is cash on delivery.</small></li></ol>
+    </section>
+
+    <details class="role-guide">
+      <summary>Your guide: delivery partner account</summary>
+      <div class="role-guide-body">
+        <p>Pick up parcels from sellers close to you and bring them to customers.</p>
+        <h3>What you can do</h3>
+      <ul>
+        <li>Switch I am available on, so sellers can choose you, and keep your location up to date.</li>
+        <li>Accept a delivery request, pick the parcel up from the seller and press I picked up the parcel, then Delivered.</li>
+        <li>Collect the cash for cash-on-delivery orders and give it to the seller.</li>
+        <li>Set your own delivery price for each speed in My details & location, My delivery prices.</li>
+        <li>See your assigned orders and your Delivery history.</li>
+      </ul>
+        <h3>Avoid these mistakes</h3>
+        <ul>
+          <li>One account is either a seller or a delivery partner, not both. Use another email for the other job. (Supervisors may do both.)</li>
+          <li>Keep your location up to date, so sellers can choose the partner closest to them.</li>
+          <li>If something does not work, press Ctrl+F5 once, then write to the owner from the Messages button.</li>
+        </ul>
+      </div>
+    </details>
+
+    <div id="courier-tools" hidden>
+      <section class="admin-stats">
+        <article class="admin-stat"><span>New requests</span><strong id="d-new">0</strong></article>
+        <article class="admin-stat"><span>In progress</span><strong id="d-active">0</strong></article>
+        <article class="admin-stat"><span>Delivered</span><strong id="d-done">0</strong></article>
+        <article class="admin-stat"><span>Availability</span><strong id="d-avail">—</strong></article>
+      </section>
+
+      <nav class="role-tabs" aria-label="Delivery sections">
+        <button type="button" class="role-tab active" data-tab="jobs">Deliveries</button>
+        <button type="button" class="role-tab" data-tab="history">Delivery history</button>
+        <button type="button" class="role-tab" data-tab="profile">My details &amp; location</button>
+      </nav>
+
+      <section class="admin-panel role-pane" id="pane-jobs">
+        <div class="panel-heading panel-title-row">
+          <div><h2>Deliveries</h2><p>Switch on <em>Available</em> so sellers can choose you.</p></div>
+          <label class="visibility-control"><input id="available" type="checkbox"><span>I am available</span></label>
+        </div>
+        <div class="fee-card" id="fee-card" hidden></div>
+        <div class="live-panel" id="live-panel">
+          <div class="panel-title-row">
+            <strong>My live location</strong>
+            <button type="button" class="small-button" id="live-toggle">Start live location</button>
+          </div>
+          <div id="live-info" class="muted">Live location is off. Start it to see how far you are from each shop.</div>
+        </div>
+        <div id="jobs"></div>
+      </section>
+
+      <section class="admin-panel role-pane" id="pane-history" hidden>
+        <div class="panel-heading"><h2>Delivery history</h2><p>Every order you delivered, with the cash you collected.</p></div>
+        <div id="history"></div>
+      </section>
+
+      <section class="admin-panel role-pane" id="pane-profile" hidden>
+        <div class="panel-heading"><h2>My details &amp; location</h2><p>Sellers pick the partner closest to their shop, so keep your location up to date.</p></div>
+        <form id="courier-profile" novalidate>
+          <div class="form-two-columns">
+            <div><label for="f-name">Full name *</label><input id="f-name" maxlength="100" required></div>
+            <div><label for="f-phone">Phone *</label><input id="f-phone" type="tel" maxlength="40" required></div>
+          </div>
+          <div class="form-two-columns">
+            <div><label for="f-country">Country *</label><input id="f-country" maxlength="80" required></div>
+            <div><label for="f-city">City *</label><input id="f-city" maxlength="80" required></div>
+          </div>
+          <label for="f-address">Area / address</label>
+          <input id="f-address" maxlength="200">
+          <label for="f-maxweight">Heaviest load I can carry (kg)</label>
+          <input id="f-maxweight" type="number" min="0" max="1000" step="0.1" inputmode="decimal" placeholder="empty = no limit">
+          <small class="muted">Sellers only offer you orders that weigh less than this.</small>
+          <label for="f-vehicle">Vehicle</label>
+          <select id="f-vehicle"><option>Motorbike</option><option>Car</option><option>Van</option><option>Bicycle</option><option>On foot</option></select>
+          <h3 class="subhead">My delivery prices</h3>
+          <p class="field-help">The customer picks a speed and pays you this fee in cash on delivery. Leave a box empty to use the site price, or write 0 if you do not offer that speed.</p>
+          <div class="rates-grid">
+            <div><label for="f-rate-fast">Express · 1 to 2 hours (€)</label><input id="f-rate-fast" type="number" min="0" max="500" step="0.5" inputmode="decimal"></div>
+            <div><label for="f-rate-medium">Standard · 6 to 10 hours (€)</label><input id="f-rate-medium" type="number" min="0" max="500" step="0.5" inputmode="decimal"></div>
+            <div><label for="f-rate-slow">Economy · up to 3 days (€)</label><input id="f-rate-slow" type="number" min="0" max="500" step="0.5" inputmode="decimal"></div>
+          </div>
+          <h3 class="subhead">Price for heavy or big parcels</h3>
+          <p class="field-help">Your prices above cover a parcel up to the weight you write here. For every extra kilo (the larger of the real weight and the size) the customer pays the extra price. Empty = no extra price.</p>
+          <div class="form-two-columns">
+            <div><label for="f-included">Included in my price (kg)</label><input id="f-included" type="number" min="0" max="1000" step="0.1" inputmode="decimal" placeholder="5"></div>
+            <div><label for="f-perkg">Extra price per kg (€)</label><input id="f-perkg" type="number" min="0" max="100000" step="0.5" inputmode="decimal" placeholder="0"></div>
+          </div>
+          <div class="calc-box" id="calc-box">
+            <h3 class="subhead">Price calculator</h3>
+            <p class="field-help">Type a parcel and see the price a customer would pay you.</p>
+            <div class="form-two-columns">
+              <div><label for="c-weight">Weight (kg)</label><input id="c-weight" type="number" min="0" step="0.1" inputmode="decimal" value="1"></div>
+              <div><label for="c-speed">Speed</label><select id="c-speed"><option value="fast">Express</option><option value="medium" selected>Standard</option><option value="slow">Economy</option></select></div>
+            </div>
+            <div class="form-two-columns dims-row">
+              <div><label for="c-length">Length (cm)</label><input id="c-length" type="number" min="0" step="0.1" inputmode="decimal"></div>
+              <div><label for="c-width">Width (cm)</label><input id="c-width" type="number" min="0" step="0.1" inputmode="decimal"></div>
+              <div><label for="c-height">Height (cm)</label><input id="c-height" type="number" min="0" step="0.1" inputmode="decimal"></div>
+            </div>
+            <p class="calc-result" id="calc-result" role="status"></p>
+          </div>
+          <p class="field-help"><button class="small-button" type="button" id="f-locate">Update my location</button>
+            <span id="f-location" class="muted"></span></p>
+          <button class="button button-teal" type="submit">Save</button>
+          <p id="f-message" class="form-message" role="status"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo · <a href="privacy.html">Privacy</a> <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span></p>
+  </footer>
+</body>
+</html>

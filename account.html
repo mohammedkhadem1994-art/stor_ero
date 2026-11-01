@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>My Account | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="chat.js?v=v208"></script>
+  <script defer src="qrcode.js?v=v208"></script>
+  <script defer src="adcard.js?v=v208"></script>
+  <script defer src="reviews.js?v=v208"></script>
+  <script defer src="account.js?v=v208"></script>
+</head>
+<body data-kyc="soft" data-push data-verify data-support data-require-role="buyer">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span>
+    </a>
+    <nav aria-label="Main"><a href="guide.html">How it works</a><a href="index.html#products">Store</a>
+      <a class="cart-link" href="checkout.html">Cart (<span id="cart-count">0</span>)</a>
+      <a id="auth-link" href="account.html">My account</a>
+    </nav>
+  </header>
+
+  <main class="account-main">
+    <div class="account-layout">
+
+      <aside class="account-sidebar">
+        <div class="avatar" id="avatar" aria-hidden="true">P</div>
+        <h2 id="side-name">My account</h2>
+        <p id="side-email" class="side-email"></p>
+        <span class="member-badge" id="member-badge">Buyer account</span>
+
+        <nav class="account-nav" aria-label="Account sections">
+          <button type="button" class="acct-nav-btn active" data-tab="overview">Overview</button>
+          <button type="button" class="acct-nav-btn" data-tab="profile">My profile</button>
+          <button type="button" class="acct-nav-btn" data-tab="orders">Orders &amp; invoices</button>
+          <button type="button" class="acct-nav-btn" data-tab="security">Security</button>
+        </nav>
+
+        <a class="button button-teal full-width" href="index.html#products">Continue shopping</a>
+        <a class="button button-secondary full-width" href="services.html">Services: doctor, travel, taxi</a>
+        <button id="join-btn" class="button button-teal full-width" type="button">Work with us: seller / delivery</button>
+        <button id="logout-btn" class="button button-secondary full-width" type="button">Log out</button>
+      </aside>
+
+      <div class="account-content">
+
+        <!-- Overview -->
+        <section id="tab-overview" class="acct-panel">
+          <p class="eyebrow">DASHBOARD</p>
+          <h1 id="welcome-title">Welcome</h1>
+          <p class="muted">Here is a summary of your activity at Plazavo.</p>
+    <section class="picture-guide" aria-label="Your account in pictures">
+      <h2 class="pg-title">Your account in pictures</h2>
+      <ol class="pg-steps"><li><span class="pg-badge">1</span><span class="pg-icon" aria-hidden="true">🔎</span><strong>Find a product</strong><small>Type its name or pick a category.</small></li><li><span class="pg-badge">2</span><span class="pg-icon" aria-hidden="true">🛒</span><strong>Add to cart</strong><small>Press the cart button.</small></li><li><span class="pg-badge">3</span><span class="pg-icon" aria-hidden="true">🚚</span><strong>Choose the speed</strong><small>Fast, normal or economy.</small></li><li><span class="pg-badge">4</span><span class="pg-icon" aria-hidden="true">💶</span><strong>Pay</strong><small>Cash on delivery or a transfer.</small></li><li><span class="pg-badge">5</span><span class="pg-icon" aria-hidden="true">💬</span><strong>Follow your order</strong><small>Open Messages to talk to the seller.</small></li></ol>
+    </section>
+
+    <details class="role-guide">
+      <summary>Your guide: customer account</summary>
+      <div class="role-guide-body">
+        <p>Buy products from independent sellers and follow your order until it arrives.</p>
+        <h3>What you can do</h3>
+      <ul>
+        <li>Browse the store, add products to the cart and place an order.</li>
+        <li>Pay with the method shown at checkout; cash on delivery goes to the delivery partner when the parcel arrives.</li>
+        <li>Follow every order (accepted, on the way, delivered), chat with the seller or delivery partner, and print your invoices.</li>
+        <li>Share your location so the delivery partner can find you.</li>
+        <li>Choose the delivery speed that suits you: Express (1 to 2 hours), Standard (6 to 10 hours) or Economy (up to 3 days). The price is shown next to each speed.</li>
+        <li>Add a profile photo from My account, My profile.</li>
+      </ul>
+        <h3>Avoid these mistakes</h3>
+        <ul>
+          <li>Use an email address that really exists: the verification link is sent there, and without it you cannot order or apply.</li>
+          <li>Open the email and click the link before trying to order or apply. Check the spam folder.</li>
+          <li>Write the phone number with the country code (+33…, +39…).</li>
+          <li>The ID photo must be sharp and show the whole card. A blurred photo may be refused.</li>
+          <li>If something does not work, press Ctrl+F5 once, then write to the owner from the Messages button.</li>
+        </ul>
+      </div>
+    </details>
+
+          <div class="account-stats">
+            <article><span>Orders</span><strong id="stat-orders">0</strong></article>
+            <article><span>Items purchased</span><strong id="stat-items">0</strong></article>
+            <article><span>Total spent</span><strong id="stat-spent">€0.00</strong></article>
+          </div>
+
+          <div class="panel">
+            <div class="panel-title-row">
+              <h2>Recent orders</h2>
+              <button type="button" class="small-button" data-go="orders">View all</button>
+            </div>
+            <div id="recent-orders"></div>
+          </div>
+
+          <div class="panel">
+            <h2>My purchased products</h2>
+            <div id="library"></div>
+          </div>
+        </section>
+
+        <!-- Profile -->
+        <section id="tab-profile" class="acct-panel" hidden>
+          <p class="eyebrow">OFFICIAL PROFILE</p>
+          <h1>My profile</h1>
+          <p class="muted">These details are used to fill your billing information at checkout and appear on your invoices.</p>
+
+          <div class="panel profile-card">
+            <div class="profile-card-head">
+              <div class="avatar avatar-large" id="profile-avatar" aria-hidden="true">P</div>
+              <div>
+                <h2 id="profile-name">—</h2>
+                <p class="muted" id="profile-email"></p>
+                <p class="customer-id">Customer ID: <strong id="profile-id">—</strong></p>
+                <p class="muted">Member since <span id="profile-since">—</span></p>
+                <div class="photo-actions">
+                  <label class="small-button" for="photo-input">Change photo</label>
+                  <input type="file" id="photo-input" accept="image/*">
+                  <button type="button" class="small-button delete-button" id="photo-remove" hidden>Remove photo</button>
+                  <span class="muted" id="photo-message" role="status"></span>
+                </div>
+              </div>
+            </div>
+            <div class="completeness">
+              <div class="completeness-label"><span>Profile completeness</span><strong id="completeness-text">0%</strong></div>
+              <div class="progress"><div id="completeness-bar"></div></div>
+            </div>
+          </div>
+
+          <section class="panel" id="adcard-panel" hidden></section>
+
+          <div class="panel">
+            <div class="panel-title-row">
+              <h2>Personal &amp; billing details</h2>
+              <button type="button" class="small-button" id="edit-profile">Edit profile</button>
+            </div>
+
+            <dl id="profile-view" class="profile-list"></dl>
+
+            <form id="profile-form" hidden novalidate>
+              <div class="form-two-columns">
+                <div>
+                  <label for="pf-name">Full name</label>
+                  <input id="pf-name" maxlength="100" autocomplete="name">
+                </div>
+                <div>
+                  <label for="pf-phone">Phone</label>
+                  <input id="pf-phone" type="tel" maxlength="40" autocomplete="tel">
+                </div>
+              </div>
+              <div class="form-two-columns">
+                <div>
+                  <label for="pf-company">Company</label>
+                  <input id="pf-company" maxlength="100" autocomplete="organization">
+                </div>
+                <div>
+                  <label for="pf-taxid">Tax / VAT number</label>
+                  <input id="pf-taxid" maxlength="40">
+                </div>
+              </div>
+              <div class="form-two-columns">
+                <div>
+                  <label for="pf-country">Country</label>
+                  <input id="pf-country" maxlength="60" autocomplete="country-name">
+                </div>
+                <div>
+                  <label for="pf-city">City</label>
+                  <input id="pf-city" maxlength="60" autocomplete="address-level2">
+                </div>
+              </div>
+              <label for="pf-address">Street address</label>
+              <input id="pf-address" maxlength="160" autocomplete="street-address">
+
+              <div class="admin-form-actions">
+                <button type="submit" class="button button-teal">Save profile</button>
+                <button type="button" class="button button-secondary" id="cancel-profile">Cancel</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel" id="location-panel">
+            <h2>My location</h2>
+            <p class="muted">Share your position so the seller and the delivery partner can find you. It is saved in your profile and with the orders you place.</p>
+            <div id="my-location"></div>
+            <button type="button" class="button button-secondary" id="locate-me">Use my current location</button>
+            <p id="loc-message" class="form-message" role="status"></p>
+          </div>
+        </section>
+
+        <!-- Orders -->
+        <section id="tab-orders" class="acct-panel" hidden>
+          <p class="eyebrow">PURCHASES</p>
+          <h1>Orders &amp; invoices</h1>
+          <p class="muted">Open or print the invoice for any of your orders.</p>
+          <div id="orders-list"></div>
+        </section>
+
+        <!-- Security -->
+        <section id="tab-security" class="acct-panel" hidden>
+          <p class="eyebrow">SECURITY</p>
+          <h1>Security</h1>
+
+          <div class="panel">
+            <h2>Change password</h2>
+            <form id="password-form">
+              <label for="pw-current">Current password</label>
+              <input id="pw-current" type="password" autocomplete="current-password" required>
+
+              <label for="pw-new">New password</label>
+              <input id="pw-new" type="password" minlength="8" autocomplete="new-password" required>
+              <p class="field-help">Use at least 8 characters.</p>
+
+              <label for="pw-confirm">Confirm new password</label>
+              <input id="pw-confirm" type="password" minlength="8" autocomplete="new-password" required>
+
+              <button class="button button-teal" type="submit">Update password</button>
+              <p id="pw-message" class="form-message" role="status"></p>
+            </form>
+          </div>
+
+          <div class="panel danger-zone">
+            <h2>Delete account</h2>
+            <p class="muted">This removes your login and profile. Past invoices are kept for accounting.</p>
+            <button id="delete-account" class="button delete-button" type="button">Delete my account</button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo</p>
+    <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+</body>
+</html>

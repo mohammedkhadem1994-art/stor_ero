@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="fLzkFkVTgUe7lNy37JSBz5lLqJgg2vBD3PTkgvpTk-M" />
+  <meta name="google-site-verification" content="rwaN0NY54sn9-hCKXUrm2xusBykmfUGuOs8wIjGWqs0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An online marketplace: buy from local sellers and get your order delivered. Plazavo.">
+  <title>Plazavo | Online Marketplace</title>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Plazavo">
+  <meta property="og:title" content="Plazavo · انضم الآن | Join now"><meta property="og:description" content="Shop from local sellers, sell your products or deliver orders. تسوّق، بِع أو وصّل مع Plazavo.">
+  <meta property="og:image" content="https://your-domain.example/og-join.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Plazavo: انضم الآن / Join now">
+  <meta property="og:url" content="https://your-domain.example/">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Plazavo · انضم الآن | Join now"><meta name="twitter:description" content="Shop from local sellers, sell your products or deliver orders. تسوّق، بِع أو وصّل مع Plazavo."><meta name="twitter:image" content="https://your-domain.example/og-join.jpg">
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="adspots.js?v=v208"></script>
+  <script defer src="reviews.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="share.js?v=v208"></script>
+  <script defer src="app.js?v=v208"></script>
+</head>
+<body class="has-rail">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span>
+    </a>
+    <nav aria-label="Main"><a href="guide.html">How it works</a><a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="services.html">Services</a>
+      <a class="cart-link" href="checkout.html">Cart (<span id="cart-count">0</span>)</a>
+      <a id="auth-link" href="login.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">YOUR ONLINE MARKETPLACE</p>
+        <h1>Everything you need,<br><span>from sellers near you.</span></h1>
+        <p class="hero-description">
+          Shops, restaurants, perfumes, phone accessories, watches and much more.
+          Pay on delivery or directly to the seller, and get your order brought to your door.
+        </p>
+      <div class="hp-duo" aria-label="Find a craftsman, a doctor, a hotel">
+        <div class="hp-card hp-trades">
+          <span class="hp-pics" aria-hidden="true"><img src="img/promo-plumber.webp" alt="" width="120" height="120" loading="lazy"><img src="img/promo-electrician.webp" alt="" width="120" height="120" loading="lazy"><img src="img/promo-painter.webp" alt="" width="120" height="120" loading="lazy"></span>
+          <span class="hp-text">
+            <span class="hp-tag">🛠️ Craftsmen &amp; trades</span>
+            <strong class="hp-title" role="heading" aria-level="2">Looking for a plumber, painter, electrician…?</strong>
+            <span class="hp-line">Choose your city and call the craftsman directly.</span>
+            <span class="hp-btns"><a class="hp-btn" href="trades.html">Find a craftsman</a><a class="hp-btn hp-join" href="trades.html#trades-mine">I am a craftsman: join</a></span>
+          </span>
+        </div>
+        <div class="hp-card hp-services">
+          <span class="hp-pics hp-icons" aria-hidden="true"><i>🩺</i><i>💈</i><i>🏨</i><i>✈️</i><i>🚕</i></span>
+          <span class="hp-text">
+            <span class="hp-tag">🧰 Services</span>
+            <strong class="hp-title" role="heading" aria-level="2">Looking for a doctor, barber, hotel…?</strong>
+            <span class="hp-line">Book an appointment, a room or a seat in a few taps.</span>
+            <span class="hp-btns"><a class="hp-btn" href="services.html">See the services</a><a class="hp-btn hp-join" href="partner.html">I offer a service: join</a></span>
+          </span>
+        </div>
+      </div>
+      </div>
+      <p class="hero-join"><a class="button join-now" href="partner.html"><span aria-hidden="true">🚀</span> <span>Join now</span> <small>Sell · Deliver · Serve</small></a></p>
+      <div class="hero-collage" role="img" aria-label="Marketplace illustration">
+        <figure class="collage-card collage-main"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjN2M3YzdjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjYyNjI2Ii8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMTUwIiB5PSIxMTUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTIwIiByeD0iMjIiIGZpbGw9InVybCgjZ2xhc3MpIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIvPgo8cmVjdCB4PSIxNTgiIHk9IjE1MCIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijc2IiByeD0iMTQiIGZpbGw9IiNjM2MzYzMiIG9wYWNpdHk9Ii43NSIvPgo8cmVjdCB4PSIxNzIiIHk9IjE2NSIgd2lkdGg9IjU2IiBoZWlnaHQ9IjQwIiByeD0iNiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjkiLz4KPHJlY3QgeD0iMTgyIiB5PSIxNzgiIHdpZHRoPSIzNiIgaGVpZ2h0PSI1IiByeD0iMi41IiBmaWxsPSIjNGY0ZjRmIi8+PHJlY3QgeD0iMTg4IiB5PSIxOTAiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iI2E3YTdhNyIvPgo8cmVjdCB4PSIxODQiIHk9IjkyIiB3aWR0aD0iMzIiIGhlaWdodD0iMjYiIHJ4PSI1IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTcwIiB5PSI1MiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjQ0IiByeD0iMTAiIGZpbGw9InVybCgjZ29sZCkiLz4KPHJlY3QgeD0iMTc2IiB5PSI2MCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjYiIHJ4PSIzIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuNSIvPgo8L2c+CjxnIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45NSI+PHBhdGggZD0iTTMwMCA5MCBsNiAxNiAxNiA2IC0xNiA2IC02IDE2IC02IC0xNiAtMTYgLTYgMTYgLTZ6Ii8+PHBhdGggZD0iTTk2IDE1MCBsNCAxMSAxMSA0IC0xMSA0IC00IDExIC00IC0xMSAtMTEgLTQgMTEgLTR6Ii8+PGNpcmNsZSBjeD0iMzIwIiBjeT0iMTkwIiByPSI1Ii8+PGNpcmNsZSBjeD0iODQiIGN5PSI5MCIgcj0iNCIvPjxjaXJjbGUgY3g9IjI2OCIgY3k9IjYwIiByPSIzIi8+PC9nPgo8ZyBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PHBhdGggZD0iTTk2IDIzMiBxNDAgLTIyIDUyIC00Ii8+PHBhdGggZD0iTTI1MiAyMjYgcTMwIC0yNCA2MiAtNiIvPjwvZz4KPC9zdmc+" data-photo="img/cat-perfume.jpg" alt="" width="400" height="300"></figure>
+        <figure class="collage-card collage-two"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWExYTFhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwYjBiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMTY4IiB5PSIxNCIgd2lkdGg9IjY0IiBoZWlnaHQ9Ijg2IiByeD0iMTQiIGZpbGw9IiM0MDQwNDAiLz48cmVjdCB4PSIxNjgiIHk9IjIwMCIgd2lkdGg9IjY0IiBoZWlnaHQ9Ijg2IiByeD0iMTQiIGZpbGw9IiM0MDQwNDAiLz4KPGcgc3Ryb2tlPSIjNmM2YzZjIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii43Ij48cGF0aCBkPSJNMTc2IDMwaDQ4TTE3NiA0NGg0OE0xNzYgMjMyaDQ4TTE3NiAyNDZoNDgiLz48L2c+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjE1MCIgcj0iNzYiIGZpbGw9InVybCgjZ29sZCkiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTUwIiByPSI2NCIgZmlsbD0iIzBlMGUwZSIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNTAiIHI9IjYyIiBmaWxsPSJub25lIiBzdHJva2U9IiM4YjhiOGIiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIuNyIvPgo8ZyBzdHJva2U9IiNlMGUwZTAiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNMjAwIDk2djEwTTIwMCAxOTR2MTBNMTQ2IDE1MGgxME0yNDQgMTUwaDEwIi8+PC9nPgo8ZyBzdHJva2U9IiNlMGUwZTAiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIuNyI+PHBhdGggZD0iTTIyNyAxMDNsLTUgOU0yNTQgMTIzbC05IDVNMjU0IDE3N2wtOSAtNU0yMjcgMTk3bC01IC05TTE3MyAxOTdsNSAtOU0xNDYgMTc3bDkgLTVNMTQ2IDEyM2w5IDVNMTczIDEwM2w1IDkiLz48L2c+CjxwYXRoIGQ9Ik0yMDAgMTUwIEwyMDAgMTEyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTIwMCAxNTAgTDIyNiAxNjYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjAwIDE1MCBMMTc2IDE4NCIgc3Ryb2tlPSIjZTg1NTNkIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNTAiIHI9IjYiIGZpbGw9InVybCgjZ29sZCkiLz4KPHJlY3QgeD0iMjc0IiB5PSIxNDEiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxOCIgcng9IjMiIGZpbGw9InVybCgjZ29sZCkiLz4KPC9nPgo8ZyBmaWxsPSIjZTJlMmUyIiBvcGFjaXR5PSIuOSI+PGNpcmNsZSBjeD0iNzgiIGN5PSI3MCIgcj0iMyIvPjxjaXJjbGUgY3g9IjMzMCIgY3k9IjYyIiByPSI0Ii8+PGNpcmNsZSBjeD0iMzMyIiBjeT0iMjQwIiByPSIzIi8+PGNpcmNsZSBjeD0iNjQiIGN5PSIyMjAiIHI9IjQiLz48L2c+Cjwvc3ZnPg==" data-photo="img/cat-watches.jpg" alt="" width="400" height="300"></figure>
+        <figure class="collage-card collage-three"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjM2E2Y2Q5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMWI0OGE4Ii8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMTUwIiB5PSIzOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIyMDQiIHJ4PSIyMiIgZmlsbD0iIzE1MTUxNSIvPgo8cmVjdCB4PSIxNTgiIHk9IjQ4IiB3aWR0aD0iODgiIGhlaWdodD0iMTg0IiByeD0iMTUiIGZpbGw9IiNmMmYyZjIiLz4KPHJlY3QgeD0iMTU4IiB5PSI0OCIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjE4NCIgcng9IjE1IiBmaWxsPSJ1cmwoI2dsYXNzKSIvPgo8cmVjdCB4PSIxNzgiIHk9IjU2IiB3aWR0aD0iNDgiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMxNTE1MTUiLz4KPGNpcmNsZSBjeD0iMjAyIiBjeT0iMTIwIiByPSIzMCIgZmlsbD0iIzM3NzFlZiIgb3BhY2l0eT0iLjg1Ii8+PGNpcmNsZSBjeD0iMjAyIiBjeT0iMTIwIiByPSIxNCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjkiLz4KPHJlY3QgeD0iMTcwIiB5PSIxNjgiIHdpZHRoPSI2NCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iI2JmYmZiZiIvPjxyZWN0IHg9IjE3MCIgeT0iMTg0IiB3aWR0aD0iNDQiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiNiZmJmYmYiLz4KPC9nPgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMjY4IiB5PSIxNTAiIHdpZHRoPSI4NCIgaGVpZ2h0PSI3MiIgcng9IjIyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMjY4IiB5PSIxNTAiIHdpZHRoPSI4NCIgaGVpZ2h0PSIzNiIgcng9IjE4IiBmaWxsPSIjZjJmMmYyIi8+CjxjaXJjbGUgY3g9IjI5NiIgY3k9IjE4OCIgcj0iOSIgZmlsbD0iI2RlZGVkZSIvPjxjaXJjbGUgY3g9IjMyNCIgY3k9IjE4OCIgcj0iOSIgZmlsbD0iI2RlZGVkZSIvPgo8cmVjdCB4PSI4NCIgeT0iMTcyIiB3aWR0aD0iNjIiIGhlaWdodD0iNDAiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjE0NiIgeT0iMTg2IiB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHJ4PSIzIiBmaWxsPSIjZDZkNmQ2Ii8+CjxjaXJjbGUgY3g9IjExNSIgY3k9IjE5MiIgcj0iMTAiIGZpbGw9IiMyZjVhYjYiLz4KPC9nPgo8cGF0aCBkPSJNODQgMTkyIHEtNjAgMTAgLTUwIDU2IHE4IDI4IDYwIDIyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuOSIvPgo8ZyBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSI+PGNpcmNsZSBjeD0iMzE4IiBjeT0iODAiIHI9IjUiLz48Y2lyY2xlIGN4PSI5MiIgY3k9IjgwIiByPSI0Ii8+PGNpcmNsZSBjeD0iMzQ2IiBjeT0iMTIwIiByPSIzIi8+PC9nPgo8L3N2Zz4=" data-photo="img/cat-phones.jpg" alt="" width="400" height="300"></figure>
+        <span class="float-badge badge-fast">⚡ Express 1–2 hours</span>
+        <span class="float-badge badge-pay">💵 Pay on delivery</span>
+      </div>
+    </section>
+
+
+    <section class="search-band" id="search-band" aria-label="Search and filter the products">
+      <div class="store-toolbar">
+        <label class="sr-only" for="product-search">Search products</label>
+        <input id="product-search" type="search" placeholder="Search products…" autocomplete="off">
+
+        <label class="sr-only" for="category-filter">Category</label>
+        <select id="category-filter"><option value="all">All categories</option></select>
+
+        <label class="sr-only" for="seller-filter">Seller</label>
+        <select id="seller-filter"><option value="all">All sellers</option></select>
+
+        <label class="sr-only" for="sort-select">Sort by</label>
+        <select id="sort-select">
+          <option value="featured">Sort: Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+        <button type="button" class="quick-clear-btn" id="quick-clear"><span aria-hidden="true">↺</span> Show everything</button>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Why shop here">
+      <div><strong>⚡ Fast delivery</strong><span>From 1–2 hours to 3 days: you choose.</span></div>
+      <div><strong>💵 Pay on delivery</strong><span>Or directly to the seller.</span></div>
+      <div><strong>✅ Verified sellers</strong><span>Every seller is approved by the store.</span></div>
+      <div><strong>💬 Chat with sellers</strong><span>Talk to the seller and the delivery partner.</span></div>
+    </section>
+
+    <aside class="fun-rail" id="games" aria-label="Games and announcements">
+      <section class="rail-card" id="rail-games">
+        <h2 class="rail-title"><span aria-hidden="true">🎮</span> Play a little</h2>
+        <p class="muted rail-sub">Free games, just for fun.</p>
+        <div class="game-tabs" id="game-tabs">
+          <button type="button" class="game-tab small-button" data-game="jewels">💎 Jewels</button>
+          <button type="button" class="game-tab small-button" data-game="blocks">🧱 Blocks</button>
+          <button type="button" class="game-tab small-button" data-game="memory">🧠 Memory</button>
+          <button type="button" class="game-tab small-button" data-game="g2048">🔢 2048</button>
+        </div>
+        <div class="game-hud"><span>Score <strong id="game-score">0</strong></span><span>Best <strong id="game-best">0</strong></span><button type="button" class="small-button" id="game-new">New game</button></div>
+        <p class="muted" id="game-help"></p>
+        <div id="game-area"></div>
+      </section>
+      <section class="rail-card ad-slot ad-slot-rail" data-ad-slot="rail" hidden>
+        <h2 class="rail-title"><span aria-hidden="true">🤝</span> Our partners</h2>
+        <div class="ad-list"></div>
+      </section>
+      <section class="rail-card" id="rail-ads" hidden>
+        <h2 class="rail-title"><span aria-hidden="true">📣</span> Announcements</h2>
+        <div id="rail-ads-list"></div>
+      </section>
+    </aside>
+
+    <section class="section" id="categories">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SHOP BY CATEGORY</p>
+          <h2>Everything in one place</h2>
+        </div>
+        <p>Pick a category to see its products.</p>
+      </div>
+      <div class="category-grid">
+        <button type="button" class="category-tile" data-search="food"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjOWY5ZjlmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZTA0NTJiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPGVsbGlwc2UgY3g9IjIwMCIgY3k9IjIyMiIgcng9IjExOCIgcnk9IjE2IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOTUiLz4KPGVsbGlwc2UgY3g9IjIwMCIgY3k9IjIxNiIgcng9IjEwMCIgcnk9IjExIiBmaWxsPSIjZWRlZGVkIi8+CjxwYXRoIGQ9Ik0xMTAgMjEyIGE5MCA5MCAwIDAgMSAxODAgMCB6IiBmaWxsPSJ1cmwoI2dsYXNzKSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiLz4KPHBhdGggZD0iTTExMCAyMTIgYTkwIDkwIDAgMCAxIDE4MCAwIHoiIGZpbGw9IiNkMWQxZDEiIG9wYWNpdHk9Ii41NSIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMTIiIHI9IjExIiBmaWxsPSIjZmZmIi8+CjxyZWN0IHg9IjE4OCIgeT0iMTE4IiB3aWR0aD0iMjQiIGhlaWdodD0iOSIgcng9IjQiIGZpbGw9IiNlNWU1ZTUiLz4KPHBhdGggZD0iTTEzNSAxOTAgcTIwIC01MCA3MCAtNjIiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI3IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii43Ii8+CjwvZz4KPGcgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iLjkiPjxwYXRoIGQ9Ik0xNzAgNzggcS0xMCAtMTQgMCAtMjYgcTEwIC0xMiAwIC0yNCIvPjxwYXRoIGQ9Ik0yMDAgNzAgcS0xMCAtMTQgMCAtMjYgcTEwIC0xMiAwIC0yNCIvPjxwYXRoIGQ9Ik0yMzAgNzggcS0xMCAtMTQgMCAtMjYgcTEwIC0xMiAwIC0yNCIvPjwvZz4KPGcgZmlsbD0iI2ZmZiIgZmlsdGVyPSJ1cmwoI3NoKSI+PHJlY3QgeD0iNTIiIHk9IjEzMCIgd2lkdGg9IjgiIGhlaWdodD0iOTAiIHJ4PSI0Ii8+PHJlY3QgeD0iNDIiIHk9IjEwMCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjQyIiByeD0iMTAiLz48cmVjdCB4PSIzNDIiIHk9IjEwMCIgd2lkdGg9IjEyIiBoZWlnaHQ9IjEyMCIgcng9IjUiLz48cGF0aCBkPSJNMzQwIDEwMCBxMTYgLTEwIDE2IDMwIGgtMTZ6Ii8+PC9nPgo8L3N2Zz4=" data-photo="img/cat-restaurants.jpg" alt="" loading="lazy" width="400" height="300"><span>Restaurants &amp; food</span></button>
+        <button type="button" class="category-tile" data-search="perfume"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjN2M3YzdjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMjYyNjI2Ii8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMTUwIiB5PSIxMTUiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTIwIiByeD0iMjIiIGZpbGw9InVybCgjZ2xhc3MpIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIvPgo8cmVjdCB4PSIxNTgiIHk9IjE1MCIgd2lkdGg9Ijg0IiBoZWlnaHQ9Ijc2IiByeD0iMTQiIGZpbGw9IiNjM2MzYzMiIG9wYWNpdHk9Ii43NSIvPgo8cmVjdCB4PSIxNzIiIHk9IjE2NSIgd2lkdGg9IjU2IiBoZWlnaHQ9IjQwIiByeD0iNiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjkiLz4KPHJlY3QgeD0iMTgyIiB5PSIxNzgiIHdpZHRoPSIzNiIgaGVpZ2h0PSI1IiByeD0iMi41IiBmaWxsPSIjNGY0ZjRmIi8+PHJlY3QgeD0iMTg4IiB5PSIxOTAiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0IiByeD0iMiIgZmlsbD0iI2E3YTdhNyIvPgo8cmVjdCB4PSIxODQiIHk9IjkyIiB3aWR0aD0iMzIiIGhlaWdodD0iMjYiIHJ4PSI1IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuODUiLz4KPHJlY3QgeD0iMTcwIiB5PSI1MiIgd2lkdGg9IjYwIiBoZWlnaHQ9IjQ0IiByeD0iMTAiIGZpbGw9InVybCgjZ29sZCkiLz4KPHJlY3QgeD0iMTc2IiB5PSI2MCIgd2lkdGg9IjQ4IiBoZWlnaHQ9IjYiIHJ4PSIzIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuNSIvPgo8L2c+CjxnIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45NSI+PHBhdGggZD0iTTMwMCA5MCBsNiAxNiAxNiA2IC0xNiA2IC02IDE2IC02IC0xNiAtMTYgLTYgMTYgLTZ6Ii8+PHBhdGggZD0iTTk2IDE1MCBsNCAxMSAxMSA0IC0xMSA0IC00IDExIC00IC0xMSAtMTEgLTQgMTEgLTR6Ii8+PGNpcmNsZSBjeD0iMzIwIiBjeT0iMTkwIiByPSI1Ii8+PGNpcmNsZSBjeD0iODQiIGN5PSI5MCIgcj0iNCIvPjxjaXJjbGUgY3g9IjI2OCIgY3k9IjYwIiByPSIzIi8+PC9nPgo8ZyBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCI+PHBhdGggZD0iTTk2IDIzMiBxNDAgLTIyIDUyIC00Ii8+PHBhdGggZD0iTTI1MiAyMjYgcTMwIC0yNCA2MiAtNiIvPjwvZz4KPC9zdmc+" data-photo="img/cat-perfume.jpg" alt="" loading="lazy" width="400" height="300"><span>Perfumes</span></button>
+        <button type="button" class="category-tile" data-search="phone"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjM2E2Y2Q5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMWI0OGE4Ii8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMTUwIiB5PSIzOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSIyMDQiIHJ4PSIyMiIgZmlsbD0iIzE1MTUxNSIvPgo8cmVjdCB4PSIxNTgiIHk9IjQ4IiB3aWR0aD0iODgiIGhlaWdodD0iMTg0IiByeD0iMTUiIGZpbGw9IiNmMmYyZjIiLz4KPHJlY3QgeD0iMTU4IiB5PSI0OCIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjE4NCIgcng9IjE1IiBmaWxsPSJ1cmwoI2dsYXNzKSIvPgo8cmVjdCB4PSIxNzgiIHk9IjU2IiB3aWR0aD0iNDgiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMxNTE1MTUiLz4KPGNpcmNsZSBjeD0iMjAyIiBjeT0iMTIwIiByPSIzMCIgZmlsbD0iIzM3NzFlZiIgb3BhY2l0eT0iLjg1Ii8+PGNpcmNsZSBjeD0iMjAyIiBjeT0iMTIwIiByPSIxNCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjkiLz4KPHJlY3QgeD0iMTcwIiB5PSIxNjgiIHdpZHRoPSI2NCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iI2JmYmZiZiIvPjxyZWN0IHg9IjE3MCIgeT0iMTg0IiB3aWR0aD0iNDQiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiNiZmJmYmYiLz4KPC9nPgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMjY4IiB5PSIxNTAiIHdpZHRoPSI4NCIgaGVpZ2h0PSI3MiIgcng9IjIyIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMjY4IiB5PSIxNTAiIHdpZHRoPSI4NCIgaGVpZ2h0PSIzNiIgcng9IjE4IiBmaWxsPSIjZjJmMmYyIi8+CjxjaXJjbGUgY3g9IjI5NiIgY3k9IjE4OCIgcj0iOSIgZmlsbD0iI2RlZGVkZSIvPjxjaXJjbGUgY3g9IjMyNCIgY3k9IjE4OCIgcj0iOSIgZmlsbD0iI2RlZGVkZSIvPgo8cmVjdCB4PSI4NCIgeT0iMTcyIiB3aWR0aD0iNjIiIGhlaWdodD0iNDAiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjE0NiIgeT0iMTg2IiB3aWR0aD0iMTQiIGhlaWdodD0iMTIiIHJ4PSIzIiBmaWxsPSIjZDZkNmQ2Ii8+CjxjaXJjbGUgY3g9IjExNSIgY3k9IjE5MiIgcj0iMTAiIGZpbGw9IiMyZjVhYjYiLz4KPC9nPgo8cGF0aCBkPSJNODQgMTkyIHEtNjAgMTAgLTUwIDU2IHE4IDI4IDYwIDIyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIuOSIvPgo8ZyBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSI+PGNpcmNsZSBjeD0iMzE4IiBjeT0iODAiIHI9IjUiLz48Y2lyY2xlIGN4PSI5MiIgY3k9IjgwIiByPSI0Ii8+PGNpcmNsZSBjeD0iMzQ2IiBjeT0iMTIwIiByPSIzIi8+PC9nPgo8L3N2Zz4=" data-photo="img/cat-phones.jpg" alt="" loading="lazy" width="400" height="300"><span>Phone accessories</span></button>
+        <button type="button" class="category-tile" data-search="watch"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMWExYTFhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwYjBiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMTY4IiB5PSIxNCIgd2lkdGg9IjY0IiBoZWlnaHQ9Ijg2IiByeD0iMTQiIGZpbGw9IiM0MDQwNDAiLz48cmVjdCB4PSIxNjgiIHk9IjIwMCIgd2lkdGg9IjY0IiBoZWlnaHQ9Ijg2IiByeD0iMTQiIGZpbGw9IiM0MDQwNDAiLz4KPGcgc3Ryb2tlPSIjNmM2YzZjIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii43Ij48cGF0aCBkPSJNMTc2IDMwaDQ4TTE3NiA0NGg0OE0xNzYgMjMyaDQ4TTE3NiAyNDZoNDgiLz48L2c+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjE1MCIgcj0iNzYiIGZpbGw9InVybCgjZ29sZCkiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTUwIiByPSI2NCIgZmlsbD0iIzBlMGUwZSIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNTAiIHI9IjYyIiBmaWxsPSJub25lIiBzdHJva2U9IiM4YjhiOGIiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIuNyIvPgo8ZyBzdHJva2U9IiNlMGUwZTAiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNMjAwIDk2djEwTTIwMCAxOTR2MTBNMTQ2IDE1MGgxME0yNDQgMTUwaDEwIi8+PC9nPgo8ZyBzdHJva2U9IiNlMGUwZTAiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIuNyI+PHBhdGggZD0iTTIyNyAxMDNsLTUgOU0yNTQgMTIzbC05IDVNMjU0IDE3N2wtOSAtNU0yMjcgMTk3bC01IC05TTE3MyAxOTdsNSAtOU0xNDYgMTc3bDkgLTVNMTQ2IDEyM2w5IDVNMTczIDEwM2w1IDkiLz48L2c+CjxwYXRoIGQ9Ik0yMDAgMTUwIEwyMDAgMTEyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTIwMCAxNTAgTDIyNiAxNjYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMjAwIDE1MCBMMTc2IDE4NCIgc3Ryb2tlPSIjZTg1NTNkIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNTAiIHI9IjYiIGZpbGw9InVybCgjZ29sZCkiLz4KPHJlY3QgeD0iMjc0IiB5PSIxNDEiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxOCIgcng9IjMiIGZpbGw9InVybCgjZ29sZCkiLz4KPC9nPgo8ZyBmaWxsPSIjZTJlMmUyIiBvcGFjaXR5PSIuOSI+PGNpcmNsZSBjeD0iNzgiIGN5PSI3MCIgcj0iMyIvPjxjaXJjbGUgY3g9IjMzMCIgY3k9IjYyIiByPSI0Ii8+PGNpcmNsZSBjeD0iMzMyIiBjeT0iMjQwIiByPSIzIi8+PGNpcmNsZSBjeD0iNjQiIGN5PSIyMjAiIHI9IjQiLz48L2c+Cjwvc3ZnPg==" data-photo="img/cat-watches.jpg" alt="" loading="lazy" width="400" height="300"><span>Watches</span></button>
+        <button type="button" class="category-tile" data-search="fashion"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYzhjOGM4Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZDk2ODdhIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHBhdGggZD0iTTE1MCAxMjAgcTAgLTYwIDUwIC02MCBxNTAgMCA1MCA2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjN2IzYTJhIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTExOCAxMTggaDE2NCBsMTYgMTI0IGExNCAxNCAwIDAgMSAtMTQgMTYgaC0xNjggYTE0IDE0IDAgMCAxIC0xNCAtMTZ6IiBmaWxsPSIjYjU0ODNhIi8+CjxwYXRoIGQ9Ik0xMTggMTE4IGgxNjQgbDUgMzYgaC0xNzR6IiBmaWxsPSIjZDM2YjUyIi8+CjxyZWN0IHg9IjE4NCIgeT0iMTQ2IiB3aWR0aD0iMzIiIGhlaWdodD0iMjYiIHJ4PSI2IiBmaWxsPSJ1cmwoI2dvbGQpIi8+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMTU5IiByPSI0IiBmaWxsPSIjN2IzYTJhIi8+CjwvZz4KPGcgZmlsdGVyPSJ1cmwoI3NoKSIgZmlsbD0iIzExMTExMSI+PHJlY3QgeD0iNDAiIHk9IjIwNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjQwIiByeD0iMTYiLz48cmVjdCB4PSIxMTgiIHk9IjIwNiIgd2lkdGg9IjY4IiBoZWlnaHQ9IjQwIiByeD0iMTYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC02IDApIi8+PHJlY3QgeD0iMTAwIiB5PSIyMTQiIHdpZHRoPSIyMCIgaGVpZ2h0PSI3IiByeD0iMyIvPjwvZz4KPGcgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjM1Ij48cmVjdCB4PSI1MCIgeT0iMjEyIiB3aWR0aD0iMjAiIGhlaWdodD0iOCIgcng9IjQiLz48cmVjdCB4PSIxMTgiIHk9IjIxMiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjgiIHJ4PSI0Ii8+PC9nPgo8ZyBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSI+PHBhdGggZD0iTTMxOCA3MCBsNSAxMyAxMyA1IC0xMyA1IC01IDEzIC01IC0xMyAtMTMgLTUgMTMgLTV6Ii8+PGNpcmNsZSBjeD0iODIiIGN5PSI3OCIgcj0iNCIvPjxjaXJjbGUgY3g9IjM1MCIgY3k9IjE5MCIgcj0iNCIvPjwvZz4KPC9zdmc+" data-photo="img/cat-fashion.jpg" alt="" loading="lazy" width="400" height="300"><span>Fashion &amp; bags</span></button>
+        <button type="button" class="category-tile" data-search="electronics"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNmM5N2YzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMWQzYTdhIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMTA0IiB5PSI2MiIgd2lkdGg9IjE5MiIgaGVpZ2h0PSIxMjQiIHJ4PSIxMiIgZmlsbD0iIzBkMGQwZCIvPgo8cmVjdCB4PSIxMTIiIHk9IjcwIiB3aWR0aD0iMTc2IiBoZWlnaHQ9IjEwOCIgcng9IjYiIGZpbGw9IiNlZGVkZWQiLz4KPHJlY3QgeD0iMTEyIiB5PSI3MCIgd2lkdGg9IjE3NiIgaGVpZ2h0PSIxMDgiIHJ4PSI2IiBmaWxsPSJ1cmwoI2dsYXNzKSIvPgo8cmVjdCB4PSIxMjQiIHk9Ijg0IiB3aWR0aD0iNzAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMzNzcxZWYiLz48cmVjdCB4PSIxMjQiIHk9IjEwMCIgd2lkdGg9IjExMCIgaGVpZ2h0PSI2IiByeD0iMyIgZmlsbD0iI2JmYmZiZiIvPjxyZWN0IHg9IjEyNCIgeT0iMTE0IiB3aWR0aD0iOTAiIGhlaWdodD0iNiIgcng9IjMiIGZpbGw9IiNiZmJmYmYiLz4KPHJlY3QgeD0iMjE0IiB5PSIxMjQiIHdpZHRoPSI2MiIgaGVpZ2h0PSI0MCIgcng9IjYiIGZpbGw9IiMyZjVhYjYiIG9wYWNpdHk9Ii44NSIvPgo8cGF0aCBkPSJNODQgMTkwIGgyMzIgbC0xNCAyMiBhMTAgMTAgMCAwIDEgLTggNCBoLTE4OCBhMTAgMTAgMCAwIDEgLTggLTR6IiBmaWxsPSIjZDFkMWQxIi8+PHJlY3QgeD0iMTcwIiB5PSIxOTIiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2IiByeD0iMyIgZmlsbD0iI2EzYTNhMyIvPgo8L2c+CjxnIGZpbHRlcj0idXJsKCNzaCkiPgo8cGF0aCBkPSJNNDIgMjA4IHEwIC02NiA1NCAtNjYgTTk2IDE0MiBxNTQgMCA1NCA2NiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEwIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI2OCAzNikiLz4KPHJlY3QgeD0iMjk4IiB5PSIyMTIiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0NiIgcng9IjExIiBmaWxsPSIjZmZmIi8+CjwvZz4KPGcgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjkiPjxjaXJjbGUgY3g9IjcwIiBjeT0iNzAiIHI9IjQiLz48Y2lyY2xlIGN4PSIzNTAiIGN5PSI5MCIgcj0iMyIvPjxjaXJjbGUgY3g9IjYwIiBjeT0iMjMwIiByPSI0Ii8+PC9nPgo8L3N2Zz4=" data-photo="img/cat-electronics.jpg" alt="" loading="lazy" width="400" height="300"><span>Electronics</span></button>
+        <button type="button" class="category-tile" data-search="shop"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNDQ2ZWM5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTIzMzdhIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iNzAiIHk9IjEyMCIgd2lkdGg9IjI2MCIgaGVpZ2h0PSIxMzAiIGZpbGw9IiNmZmYiLz4KPHBhdGggZD0iTTYwIDcwIGgyODAgbDE2IDU2IGgtMzEyeiIgZmlsbD0iI2U4NTUzZCIvPgo8ZyBmaWxsPSIjZmZmIj48cGF0aCBkPSJNODggNzAgaDI4IGwtNCA1NiBoLTI4eiIvPjxwYXRoIGQ9Ik0xNDQgNzAgaDI4IGwtMiA1NiBoLTI4eiIvPjxwYXRoIGQ9Ik0yMDAgNzAgaDI4IGwyIDU2IGgtMjh6Ii8+PHBhdGggZD0iTTI1NiA3MCBoMjggbDYgNTYgaC0yOHoiLz48L2c+CjxwYXRoIGQ9Ik00NCAxMjYgcTE0IDI0IDI4IDAgcTE0IDI0IDI4IDAgcTE0IDI0IDI4IDAgcTE0IDI0IDI4IDAgcTE0IDI0IDI4IDAgcTE0IDI0IDI4IDAgcTE0IDI0IDI4IDAgcTE0IDI0IDI4IDB6IiBmaWxsPSIjZTg1NTNkIi8+CjxyZWN0IHg9IjkyIiB5PSIxNTYiIHdpZHRoPSI4MiIgaGVpZ2h0PSI2MiIgcng9IjYiIGZpbGw9IiNkZGRkZGQiLz48cmVjdCB4PSI5MiIgeT0iMTU2IiB3aWR0aD0iODIiIGhlaWdodD0iNjIiIHJ4PSI2IiBmaWxsPSJ1cmwoI2dsYXNzKSIvPgo8cmVjdCB4PSIyMjYiIHk9IjE1MCIgd2lkdGg9IjU2IiBoZWlnaHQ9IjEwMCIgcng9IjYiIGZpbGw9IiMxMjMzN2EiLz48Y2lyY2xlIGN4PSIyNzAiIGN5PSIyMDQiIHI9IjQiIGZpbGw9IiNlMmUyZTIiLz4KPHJlY3QgeD0iMTA0IiB5PSIxOTYiIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgcng9IjMiIGZpbGw9IiNjOGM4YzgiLz48cmVjdCB4PSIxMzIiIHk9IjE4NiIgd2lkdGg9IjE4IiBoZWlnaHQ9IjMyIiByeD0iMyIgZmlsbD0iI2Q5Njg3YSIvPgo8cmVjdCB4PSI2MCIgeT0iMjQ4IiB3aWR0aD0iMjgwIiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iIzFmMWYxZiIvPgo8L2c+CjxnIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45Ij48Y2lyY2xlIGN4PSI0NiIgY3k9IjUyIiByPSI0Ii8+PGNpcmNsZSBjeD0iMzU4IiBjeT0iNDAiIHI9IjUiLz48Y2lyY2xlIGN4PSIzNjQiIGN5PSIyMTAiIHI9IjMiLz48L2c+Cjwvc3ZnPg==" data-photo="img/cat-shops.jpg" alt="" loading="lazy" width="400" height="300"><span>Local shops</span></button>
+        <button type="button" class="category-tile" data-search="gift"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIiByb2xlPSJpbWciPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjN2JkODhmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMWMzYTdhIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZTJlMmUyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOGI4YjhiIi8+PC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJnbGFzcyIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIuODUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iLjI1Ii8+PC9saW5lYXJHcmFkaWVudD4KPGZpbHRlciBpZD0ic2giIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE1MCUiPjxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI4IiBzdGREZXZpYXRpb249IjgiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIuMjUiLz48L2ZpbHRlcj48L2RlZnM+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSJ1cmwoI2JnKSIvPgo8Y2lyY2xlIGN4PSIzNDAiIGN5PSI1MCIgcj0iNzAiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii4wOCIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMjcwIiByPSI5MCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjA3Ii8+Cgo8ZyBmaWx0ZXI9InVybCgjc2gpIj4KPHJlY3QgeD0iMTIwIiB5PSIxNDAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMTEwIiByeD0iMTAiIGZpbGw9IiNlODU1M2QiLz4KPHJlY3QgeD0iMTEwIiB5PSIxMTIiIHdpZHRoPSIxODAiIGhlaWdodD0iNDAiIHJ4PSIxMCIgZmlsbD0iI2YyNmI1MiIvPgo8cmVjdCB4PSIxODQiIHk9IjExMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjEzOCIgZmlsbD0iI2UyZTJlMiIvPgo8cGF0aCBkPSJNMjAwIDExMiBxLTYwIC01MCAtNjIgLTEyIHEwIDE4IDQwIDEyeiIgZmlsbD0iI2UyZTJlMiIvPjxwYXRoIGQ9Ik0yMDAgMTEyIHE2MCAtNTAgNjIgLTEyIHEwIDE4IC00MCAxMnoiIGZpbGw9IiNkNGQ0ZDQiLz4KPGNpcmNsZSBjeD0iMjAwIiBjeT0iMTEwIiByPSIxMCIgZmlsbD0iIzlhOWE5YSIvPgo8L2c+CjxnIGZpbHRlcj0idXJsKCNzaCkiPjxyZWN0IHg9IjMwMCIgeT0iMTkwIiB3aWR0aD0iNTYiIGhlaWdodD0iNjAiIHJ4PSI4IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTM1NiAyMDQgcTI2IDQgMTIgMjYgcS02IDggLTEyIDgiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI3IiBmaWxsPSJub25lIi8+PHJlY3QgeD0iMzA2IiB5PSIxOTYiIHdpZHRoPSI0NCIgaGVpZ2h0PSI4IiBmaWxsPSIjYzhlYWQyIi8+PC9nPgo8ZyBmaWx0ZXI9InVybCgjc2gpIj48cGF0aCBkPSJNNzAgMjUwIHEtMTAgLTUwIDIyIC03MCBxMTggMzYgLTYgNzB6IiBmaWxsPSIjMmY5ZTVmIi8+PHBhdGggZD0iTTcwIDI1MCBxMTggLTQ0IC0xNCAtNjYgcS0yNCAzMCAtNiA2NnoiIGZpbGw9IiM0N2MwN2EiLz48cmVjdCB4PSI1MCIgeT0iMjQ2IiB3aWR0aD0iNTAiIGhlaWdodD0iMjIiIHJ4PSI2IiBmaWxsPSIjNWE1YTVhIi8+PC9nPgo8ZyBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSI+PHBhdGggZD0iTTgwIDgwIGw1IDEzIDEzIDUgLTEzIDUgLTUgMTMgLTUgLTEzIC0xMyAtNSAxMyAtNXoiLz48Y2lyY2xlIGN4PSIzMzAiIGN5PSI5MCIgcj0iNCIvPjxjaXJjbGUgY3g9IjM0OCIgY3k9IjE1MCIgcj0iMyIvPjwvZz4KPC9zdmc+" data-photo="img/cat-gifts.jpg" alt="" loading="lazy" width="400" height="300"><span>Home &amp; gifts</span></button>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Accounts">
+      <a class="trust-card" href="accounts.html#customer"><strong>Customer account</strong><span>Buy from sellers near you →</span></a>
+      <a class="trust-card" href="accounts.html#seller"><strong>Seller account</strong><span>Sell your products →</span></a>
+      <a class="trust-card" href="accounts.html#courier"><strong>Delivery account</strong><span>Deliver orders and earn →</span></a>
+    </section>
+
+    <section class="section" id="products">
+      <div class="view-tabs" id="view-tabs" role="tablist" aria-label="What to show">
+        <button type="button" class="view-tab active" role="tab" aria-selected="true" data-view="products">🛍️ Products</button>
+        <button type="button" class="view-tab" role="tab" aria-selected="false" data-view="stores">🏪 Shops &amp; restaurants</button>
+      </div>
+      <div id="store-grid-box" hidden>
+        <div class="section-heading"><div><p class="eyebrow">THE PARTNERS</p><h2>Shops &amp; restaurants</h2></div><p>Choose a shop or a restaurant to see only its products.</p></div>
+        <div id="store-kinds" class="chips" role="group" aria-label="Kind"></div>
+        <p id="store-count" class="result-count" aria-live="polite"></p>
+        <div id="store-grid" class="store-cards" aria-live="polite"></div>
+      </div>
+      <div id="products-box">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE CATALOG</p>
+          <h2>Products</h2>
+        </div>
+        <p>Choose a product to add it to your cart.</p>
+      </div>
+
+      <p id="product-count" class="result-count" aria-live="polite"></p>
+
+      <div id="product-grid" class="product-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="styles-showcase" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Barbers</p>
+          <h2>Haircut styles</h2>
+        </div>
+        <p>Choose a style, then book your turn with the barber.</p>
+      </div>
+      <div id="style-grid" class="product-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">REVIEWS</p>
+          <h2>What customers say</h2>
+        </div>
+        <p>Rate the site and your trust in it with stars, and write a comment.</p>
+      </div>
+      <div id="site-reviews"></div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="about-symbol" aria-hidden="true">⌘</div>
+      <div>
+        <p class="eyebrow">ABOUT US</p>
+        <h2>A marketplace that connects people.</h2>
+        <p>
+          Plazavo brings customers, independent sellers and delivery partners together.
+          Sellers list their products, customers order, and a delivery partner near the seller brings the parcel.
+        </p>
+        <a href="guide.html">How it works →</a>
+      </div>
+    </section>
+  </main>
+  <a class="join-fab" id="join-fab" href="partner.html"><span aria-hidden="true">🚀</span> <span>Join now</span></a>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Your online marketplace</small></span>
+    </a>
+    <span>© <span data-year></span> Plazavo</span>
+    <a href="privacy.html">Privacy</a> <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span> <span class="demo-label">DEMO VERSION</span>
+  </footer>
+  <script defer src="home.js?v=v208"></script>
+  <script defer src="games.js?v=v208"></script>
+</body>
+</html>

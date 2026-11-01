@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seller dashboard | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="jsqr.js?v=v208"></script>
+  <script defer src="paycode.js?v=v208"></script>
+  <script defer src="reviews.js?v=v208"></script>
+  <script defer src="qrcode.js?v=v208"></script>
+  <script defer src="adcard.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="chat.js?v=v208"></script>
+  <script defer src="doctor.js?v=v208"></script>
+  <script defer src="look.js?v=v208"></script>
+  <script defer src="styles.js?v=v208"></script>
+  <script defer src="schedule.js?v=v208"></script>
+  <script defer src="rooms.js?v=v208"></script>
+  <script defer src="seatmap.js?v=v208"></script>
+  <script defer src="trips.js?v=v208"></script>
+  <script defer src="trusted.js?v=v208"></script>
+  <script defer src="sales.js?v=v208"></script>
+  <script defer src="merchant.js?v=v208"></script>
+</head>
+<body data-kyc="required" data-push data-verify data-support data-require-role="merchant">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>Seller dashboard</small></span>
+    </a>
+    <nav aria-label="Main">
+      <a href="index.html">Store</a>
+      <a id="auth-link" href="login.html">Sign in</a>
+    </nav>
+  </header>
+
+  <main class="admin-main">
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">SELLER DASHBOARD</span>
+        <h1 id="shop-title">Your shop</h1>
+        <p>Add your products, accept orders and choose a delivery partner near you.</p>
+      </div>
+      <a class="button button-teal" href="index.html">Open store ↗</a>
+      <button type="button" class="small-button rate-site" title="Rate the store">⭐ Rate the store</button>
+    </section>
+
+    <div id="account-banner"></div>
+    <div id="plans-box"></div>
+    <section class="admin-panel" id="adcard-panel" hidden></section>
+    <section class="picture-guide shop-only" aria-label="Your shop in pictures">
+      <h2 class="pg-title">Your shop in pictures</h2>
+      <ol class="pg-steps"><li><span class="pg-badge">1</span><span class="pg-icon" aria-hidden="true">📝</span><strong>Fill in your details</strong><small>Name, phone, address and ID card.</small></li><li><span class="pg-badge">2</span><span class="pg-icon" aria-hidden="true">⏳</span><strong>Wait for approval</strong><small>The owner checks your account.</small></li><li><span class="pg-badge">3</span><span class="pg-icon" aria-hidden="true">📷</span><strong>Add a product</strong><small>A clear photo, a price, a short text.</small></li><li><span class="pg-badge">4</span><span class="pg-icon" aria-hidden="true">🔔</span><strong>Accept the order</strong><small>Press Accept when a customer orders.</small></li><li><span class="pg-badge">5</span><span class="pg-icon" aria-hidden="true">🚚</span><strong>Choose a delivery partner</strong><small>Pick one near you and send the request.</small></li><li><span class="pg-badge">6</span><span class="pg-icon" aria-hidden="true">💶</span><strong>Pay the site&#x27;s fee</strong><small>The site's fee on each delivered order.</small></li></ol>
+    </section>
+
+    <details class="role-guide shop-only">
+      <summary>Your guide: seller account</summary>
+      <div class="role-guide-body">
+        <p>Sell your own products in the store. You receive the orders, accept them and choose the delivery partner closest to you.</p>
+        <h3>What you can do</h3>
+      <ul>
+        <li>Add products with a photo from your camera, a price and a description.</li>
+        <li>Accept or reject each order, then send a delivery request to a delivery partner near your shop.</li>
+        <li>Receive the money yourself: cash collected by the delivery partner, or a direct transfer to your bank account.</li>
+        <li>Cash on delivery orders are settled through the delivery partner: he gives you your part and owes the site's fee. You only pay the site's commission on orders the customer paid you directly, by bank transfer or by hand. Your balance and its history are in your dashboard.</li>
+      </ul>
+        <h3>Setting up your shop</h3>
+      <ol>
+        <li>First create a customer account (see above) and verify your email.</li>
+        <li>Open My account and press Work with us: seller / delivery.</li>
+        <li>Choose Become a seller and fill in your name, shop name, phone, country, city and address. Press Use my current location so delivery partners can find your shop.</li>
+        <li>Press Send application. The store owner reviews it. You will see “Pending review”, then “Approved”.</li>
+        <li>Add your first product in the Products tab.</li>
+      </ol>
+        <h3>Avoid these mistakes</h3>
+        <ul>
+          <li>One account is either a seller or a delivery partner, not both. Use another email for the other job. (Supervisors may do both.)</li>
+          <li>Sellers: keep your debt under €1000, otherwise your shop is paused until you pay the site.</li>
+          <li>If something does not work, press Ctrl+F5 once, then write to the owner from the Messages button.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="role-guide provider-guide" data-kind="doctor" hidden>
+      <summary>Your guide: doctor account</summary>
+      <div class="role-guide-body">
+        <ol>
+          <li>Patients choose you on the Doctors page and write their first name, last name, phone and the day they want to come.</li>
+          <li>You see each request here. Choose the hour the patient must come and press Accept, or press Refuse.</li>
+          <li>The patient is told at once (notification and on his page).</li>
+          <li>Use the Notes box on each line for yourself: nobody else sees it.</li>
+          <li>Press Prescription to write and send an electronic prescription; the patient reads and prints it from his page.</li>
+          <li>Press Done when the visit is over.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="role-guide provider-guide" data-kind="barber" hidden>
+      <summary>Your guide: barbershop account</summary>
+      <div class="role-guide-body">
+        <ol>
+          <li>Customers choose your shop on the Barbers page, pick a free hour of the day and book. The hour is confirmed at once and can never be given twice.</li>
+          <li>Open the Schedule board: it shows the whole day, in order.</li>
+          <li>A customer who comes to the shop without the site: press "+ Add here" on a free hour (or the walk-in form) and write his name and phone.</li>
+          <li>Press Done when the customer is finished. Use the Notes box for yourself.</li>
+          <li>In "How customers may pay you" choose freely: cash or site credit.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="role-guide provider-guide" data-kind="agency" hidden>
+      <summary>Your guide: travel agency account</summary>
+      <div class="role-guide-body">
+        <ol>
+          <li>Customers ask for a ticket on the Travel page: where from, where to, the day and the number of passengers.</li>
+          <li>You see each request here. Write the price and the departure hour, then press Accept, or press Refuse.</li>
+          <li>The customer is told at once and sees your price and hour on his page. The payment is arranged directly with you.</li>
+          <li>Press Send ticket to send the e-ticket (reference, seat, instructions); the customer reads and prints it.</li>
+          <li>Use the Notes box for yourself: nobody else sees it.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="role-guide provider-guide" data-kind="taxi" hidden>
+      <summary>Your guide: taxi driver account</summary>
+      <div class="role-guide-body">
+        <ol>
+          <li>Customers ask for a ride on the Taxi page: pick-up place, destination, the day, the hour they want and the passengers.</li>
+          <li>You see each request here. Write your price and the pick-up hour, then press Accept, or press Refuse.</li>
+          <li>The customer is told at once and sees your price and hour on his page. He pays you directly.</li>
+          <li>Press Done when the ride is finished. Use the Notes box for yourself: nobody else sees it.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="role-guide provider-guide" data-kind="hotel" hidden>
+      <summary>Your guide: hotel / lodging account</summary>
+      <div class="role-guide-body">
+        <ol>
+          <li>Add each type of room (name, price of one night, how many rooms of this type, guests per room). Hide a type any time with its switch.</li>
+          <li>Customers choose the days and hours of arrival and departure, then a room type that is free for all the nights. The booking is confirmed at once and the rooms are counted night by night, so you can never be booked twice for the same room.</li>
+          <li>The customer pays you at the hotel. Press Done when the guest leaves, or cancel a booking if you must: the room becomes free again.</li>
+        </ol>
+      </div>
+    </details>
+
+    <div id="doctor-tools" hidden>
+      <section class="admin-stats">
+        <article class="admin-stat"><span>Waiting for your answer</span><strong id="d-pending">0</strong></article>
+        <article class="admin-stat"><span>Accepted</span><strong id="d-accepted">0</strong></article>
+        <article class="admin-stat"><span>Today</span><strong id="d-today">0</strong></article>
+        <article class="admin-stat"><span>Done</span><strong id="d-done">0</strong></article>
+        <article class="admin-stat"><span>All bookings</span><strong id="d-total">0</strong></article>
+        <article class="admin-stat"><span>People served</span><strong id="d-people">0</strong></article>
+      </section>
+      <section class="admin-panel" id="rooms-panel" hidden>
+        <div class="panel-heading"><h2>Rooms and prices</h2><p>Customers choose one of these room types when they book. Price is for one night.</p></div>
+        <label class="visibility-control board-open"><input id="rm-open" type="checkbox" checked><span id="rm-open-text">Bookings are open.</span></label>
+        <form id="rm-form" novalidate>
+          <input type="hidden" id="rm-id">
+          <div class="form-two-columns">
+            <div><label for="rm-name">Room type *</label><input id="rm-name" maxlength="100" placeholder="e.g. Double room, Family suite"></div>
+            <div><label for="rm-price">Price of one night *</label><input id="rm-price" type="number" min="0" step="any"></div>
+          </div>
+          <div class="form-two-columns">
+            <div><label for="rm-count">How many rooms of this type *</label><input id="rm-count" type="number" min="1" max="500" value="1"></div>
+            <div><label for="rm-guests">Guests per room *</label><input id="rm-guests" type="number" min="1" max="20" value="2"></div>
+          </div>
+          <label for="rm-about">Details (optional: bed, view, breakfast…)</label>
+          <input id="rm-about" maxlength="300">
+          <button class="button button-teal" type="submit" id="rm-save">Add room type</button> <button class="small-button" type="button" id="rm-cancel" hidden>Cancel editing</button>
+          <p id="rm-message" class="form-message" role="status"></p>
+        </form>
+        <div id="rm-list"></div>
+      </section>
+      <section class="admin-panel" id="trips-panel" hidden>
+        <div class="panel-heading"><h2>Bus trips and seats</h2><p>Add a trip: every bus has numbered seats (56 by default). Customers book seats in the app; you sell seats at the counter from the seat map. Your working days stay in the schedule board below.</p></div>
+        <form id="tr-form" novalidate>
+          <input type="hidden" id="tr-id">
+          <div class="form-two-columns">
+            <div><label for="tr-from">From *</label><input id="tr-from" maxlength="100"></div>
+            <div><label for="tr-to">To *</label><input id="tr-to" maxlength="100"></div>
+          </div>
+          <div class="form-two-columns">
+            <div><label for="tr-day">Day *</label><input id="tr-day" type="date"></div>
+            <div><label for="tr-time">Departure hour *</label><input id="tr-time" type="time"></div>
+          </div>
+          <div class="form-two-columns">
+            <div><label for="tr-seats">Seats in the bus *</label><input id="tr-seats" type="number" min="1" max="80" value="56"></div>
+            <div><label for="tr-price">Price of one seat</label><input id="tr-price" type="number" min="0" step="any"></div>
+          </div>
+          <div id="tr-repeat-box"><label for="tr-repeat">Repeat every day for (days)</label><input id="tr-repeat" type="number" min="1" max="30" value="1"></div>
+          <button class="button button-teal" type="submit" id="tr-save">Add trip</button> <button class="small-button" type="button" id="tr-cancel" hidden>Cancel editing</button>
+          <p id="tr-message" class="form-message" role="status"></p>
+        </form>
+        <div id="tr-list"></div>
+        <div id="tr-map" hidden></div>
+        <div id="tr-tickets" hidden></div>
+        <form id="tr-check" class="trip-holder" novalidate><label for="tc-no">Check a ticket at boarding</label>
+          <div class="form-two-columns"><div><input id="tc-no" maxlength="20" placeholder="MK-XXXXXX"></div><div><button class="button button-teal" type="submit">Check</button></div></div>
+          <p id="tc-result" class="muted" role="status"></p></form>
+      </section>
+      <section class="admin-panel" id="styles-panel" hidden>
+        <div class="panel-heading"><h2>Haircut styles and prices</h2><p>Customers see these photos when they book. Each style has its own price.</p></div>
+        <form id="st-form" novalidate>
+          <div class="form-two-columns">
+            <div><label for="st-name">Style name *</label><input id="st-name" maxlength="100" placeholder="e.g. Fade, Beard trim"></div>
+            <div><label for="st-price">Price *</label><input id="st-price" type="number" min="0" step="any"></div>
+          </div>
+          <label for="st-photo">Photo</label>
+          <input id="st-photo" type="file" accept="image/*">
+          <img id="st-preview" alt="" hidden width="120">
+          <button class="button button-teal" type="submit">Add style</button>
+          <p id="st-quota" class="muted" aria-live="polite"></p>
+          <p id="st-message" class="form-message" role="status"></p>
+        </form>
+        <div id="st-list" class="style-list"></div>
+      </section>
+      <section class="admin-panel" id="board-panel" hidden>
+        <div class="panel-heading"><h2>Schedule board</h2><p>One table for the day: people who booked with the app and people who walk in, in the right order. Hours taken by the app can never be given twice.</p></div>
+        <p id="b-noschedule" class="form-message error" role="alert" hidden>Your free hours are not published yet, so customers can NOT choose an hour: they only send a day. Check your days and hours below, then press “Save the schedule”.</p>
+        <label class="visibility-control board-open"><input id="b-open" type="checkbox" checked><span id="b-open-text">Appointments are open.</span></label>
+        <div id="b-lanes" class="b-lanes" hidden></div>
+        <div class="board-toolbar">
+          <button type="button" class="small-button" id="b-prev" aria-label="Previous day">◀</button>
+          <input type="date" id="b-day" aria-label="Day">
+          <button type="button" class="small-button" id="b-next" aria-label="Next day">▶</button>
+          <button type="button" class="small-button" id="b-today">Today</button>
+          <button type="button" class="small-button" id="b-print">Print the day</button>
+          <span id="b-summary" class="board-summary"></span>
+        </div>
+        <div id="b-table"></div>
+        <p><button type="button" class="button button-teal" id="b-add" hidden>+ Add a person now</button></p>
+        <div id="b-modal" class="appt-modal" hidden>
+          <div class="appt-modal-card" role="dialog" aria-modal="true">
+            <button type="button" class="appt-modal-x" id="b-modal-x" aria-label="Close">×</button>
+            <form id="b-walkin" class="board-walkin" hidden>
+              <h3>Add a person who is here now <small class="muted">(no account needed: write his name, he gets the next number or the next free hour, first come, first served)</small></h3>
+              <div class="form-two-columns">
+                <div><label for="b-first">First name *</label><input id="b-first" maxlength="60" required></div>
+                <div><label for="b-last">Last name</label><input id="b-last" maxlength="60"></div>
+                <div><label for="b-phone">Phone</label><input id="b-phone" type="tel" maxlength="40"></div>
+                <div><label for="b-time">Hour</label><select id="b-time"><option value="">Next free hour</option></select></div>
+              </div>
+              <label for="b-reason">Details (optional)</label><input id="b-reason" maxlength="300">
+              <button class="button button-teal" type="submit">Add to the board</button>
+              <p id="b-message" class="form-message" role="status"></p>
+            </form>
+            <div id="b-detail" hidden></div>
+          </div>
+        </div>
+        <details id="b-settings" class="board-settings">
+          <summary>Opening hours, appointment length and holidays</summary>
+          <form id="s-form" novalidate>
+            <label for="s-slot">Length of one appointment</label>
+            <select id="s-slot"><option value="10">10 minutes</option><option value="15">15 minutes</option><option value="20">20 minutes</option><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option><option value="90">90 minutes</option><option value="120">120 minutes</option></select>
+            <div class="table-wrap hours-wrap"><table class="orders-table hours-table"><thead><tr><th>Day</th><th class="num">Open</th><th>From</th><th>To</th></tr></thead><tbody>
+                <tr><td class="hours-day"><label for="s-open-0">Sunday</label></td><td class="hours-on"><input type="checkbox" id="s-open-0" aria-label="Sunday open"></td><td><input type="time" id="s-from-0" aria-label="Sunday from"></td><td><input type="time" id="s-to-0" aria-label="Sunday to"></td></tr>
+                <tr><td class="hours-day"><label for="s-open-1">Monday</label></td><td class="hours-on"><input type="checkbox" id="s-open-1" aria-label="Monday open"></td><td><input type="time" id="s-from-1" aria-label="Monday from"></td><td><input type="time" id="s-to-1" aria-label="Monday to"></td></tr>
+                <tr><td class="hours-day"><label for="s-open-2">Tuesday</label></td><td class="hours-on"><input type="checkbox" id="s-open-2" aria-label="Tuesday open"></td><td><input type="time" id="s-from-2" aria-label="Tuesday from"></td><td><input type="time" id="s-to-2" aria-label="Tuesday to"></td></tr>
+                <tr><td class="hours-day"><label for="s-open-3">Wednesday</label></td><td class="hours-on"><input type="checkbox" id="s-open-3" aria-label="Wednesday open"></td><td><input type="time" id="s-from-3" aria-label="Wednesday from"></td><td><input type="time" id="s-to-3" aria-label="Wednesday to"></td></tr>
+                <tr><td class="hours-day"><label for="s-open-4">Thursday</label></td><td class="hours-on"><input type="checkbox" id="s-open-4" aria-label="Thursday open"></td><td><input type="time" id="s-from-4" aria-label="Thursday from"></td><td><input type="time" id="s-to-4" aria-label="Thursday to"></td></tr>
+                <tr><td class="hours-day"><label for="s-open-5">Friday</label></td><td class="hours-on"><input type="checkbox" id="s-open-5" aria-label="Friday open"></td><td><input type="time" id="s-from-5" aria-label="Friday from"></td><td><input type="time" id="s-to-5" aria-label="Friday to"></td></tr>
+                <tr><td class="hours-day"><label for="s-open-6">Saturday</label></td><td class="hours-on"><input type="checkbox" id="s-open-6" aria-label="Saturday open"></td><td><input type="time" id="s-from-6" aria-label="Saturday from"></td><td><input type="time" id="s-to-6" aria-label="Saturday to"></td></tr>
+                <tr class="hours-break"><td class="hours-day">Break (optional)</td><td class="hours-on">—</td><td><input type="time" id="s-break-from" aria-label="Break from"></td><td><input type="time" id="s-break-to" aria-label="Break to"></td></tr>
+            </tbody></table></div>
+            <label>Holidays and days off (the day is closed for bookings)</label>
+            <div class="hours-row"><input type="date" id="s-closed-day"><button type="button" class="small-button" id="s-closed-add">Add holiday</button></div>
+            <div id="s-closed-list" class="board-chips"></div>
+            <button class="button button-teal" type="submit">Save the schedule</button>
+            <p id="s-message" class="form-message" role="status"></p>
+          </form>
+        </details>
+      </section>
+      <section class="admin-panel" id="requests-panel">
+        <div class="panel-heading">
+          <h2 id="d-title">Patients and appointments</h2>
+          <p id="d-help">Accept a request by choosing the hour. The Notes box is private (only you see it).</p>
+        </div>
+        <div class="appt-toolbar">
+          <input type="search" id="d-search" placeholder="Search by name or phone…" autocomplete="off">
+          <label class="appt-hour">Day <input type="date" id="d-day"></label>
+          <button type="button" class="small-button" id="d-today-btn">Today</button>
+          <button type="button" class="small-button" id="d-all-btn">All days</button>
+          <button type="button" class="small-button" id="d-print">Print the day's list</button>
+          <button type="button" class="small-button" id="d-csv">Export (CSV)</button>
+        </div>
+        <div id="d-list"></div>
+      </section>
+      <section class="admin-panel" id="details-panel">
+        <div class="panel-heading"><h2 id="doc-heading">Clinic details</h2><p id="doc-help">Patients see your name, specialty and city.</p></div>
+        <form id="doc-form" novalidate>
+          <div class="form-two-columns">
+            <div><label for="doc-business" id="doc-business-label">Clinic / doctor name *</label><input id="doc-business" maxlength="100" required></div>
+            <div><label for="doc-specialty" id="doc-specialty-label">Specialty</label><input id="doc-specialty" maxlength="200"></div>
+          </div>
+          <div class="form-two-columns">
+            <div><label for="doc-phone">Phone *</label><input id="doc-phone" type="tel" maxlength="40" required></div>
+            <div><label for="doc-city">City *</label><input id="doc-city" maxlength="80" required></div>
+          </div>
+          <label for="doc-address" id="doc-address-label">Clinic address *</label>
+          <input id="doc-address" maxlength="200" required>
+          <fieldset class="pay-fieldset"><legend>How customers may pay you</legend>
+            <label class="check-line"><input type="checkbox" id="doc-cash" checked> Cash (at the place)</label>
+            <label class="check-line"><input type="checkbox" id="doc-credit" checked> Site credit (the customer's balance)</label>
+            <p class="field-help">You choose freely. Customers see the ways you accept before they book.</p>
+          </fieldset>
+          <button class="button button-teal" type="submit">Save</button>
+          <p id="doc-message" class="form-message" role="status"></p>
+        </form>
+      </section>
+    </div>
+
+    <div id="seller-tools" hidden>
+      <section class="admin-stats">
+        <article class="admin-stat"><span>Products</span><strong id="s-products">0</strong></article>
+        <article class="admin-stat"><span>Orders to handle</span><strong id="s-open">0</strong></article>
+        <article class="admin-stat"><span>Delivered</span><strong id="s-done">0</strong></article>
+        <article class="admin-stat"><span>Your earnings (EUR)</span><strong id="s-net">€0.00</strong></article>
+      </section>
+
+      <nav class="role-tabs" aria-label="Seller sections">
+        <button type="button" class="role-tab active" data-tab="orders">Orders</button>
+        <button type="button" class="role-tab" data-tab="products">Products</button>
+        <button type="button" class="role-tab" data-tab="sales">Sales</button>
+        <button type="button" class="role-tab" data-tab="trusted">Trusted delivery partners</button>
+        <button type="button" class="role-tab" data-tab="profile">Shop &amp; location</button>
+      </nav>
+
+      <section class="admin-panel restaurant-only" id="restaurant-box" hidden>
+        <div class="panel-heading"><h2>Your restaurant</h2><p>Open or close your kitchen, and see your menu at a glance. Closed = customers cannot order from you.</p></div>
+        <div class="restaurant-controls">
+          <label class="visibility-control"><input id="r-open" type="checkbox" checked><span id="r-open-text">Open: taking orders</span></label>
+          <p class="muted" id="r-menu-line"></p>
+          <p class="muted">When an order is accepted the kitchen clock starts (the longest preparation time of its dishes). Press <strong>Almost ready</strong> to tell the delivery partner to come now.</p>
+        </div>
+      </section>
+
+      <section class="admin-panel role-pane" id="pane-orders">
+        <div class="panel-heading">
+          <h2>Orders</h2>
+          <p>Accept an order once the payment is confirmed, then choose the delivery partner closest to you.</p>
+        </div>
+        <div id="seller-orders"></div>
+      </section>
+
+      <section class="admin-panel role-pane" id="pane-sales" hidden>
+        <div class="panel-heading"><h2>Sales</h2><p>Your earnings from delivered orders, your best sellers and what is sold out.</p></div>
+        <div id="sales-box"></div>
+      </section>
+
+      <section class="admin-panel role-pane" id="pane-trusted" hidden>
+        <div class="panel-heading"><h2>Trusted delivery partners</h2><p>Name the delivery partners you trust. They appear first when you choose who delivers.</p></div>
+        <div id="trusted-box"></div>
+      </section>
+
+      <section class="admin-layout role-pane" id="pane-products" hidden>
+        <div class="admin-panel">
+          <div class="panel-heading"><h2 id="p-heading">Add a product</h2><p>Your products appear in the public store under your shop name.</p></div>
+          <p id="p-quota" class="muted" aria-live="polite"></p>
+          <form id="p-form" novalidate>
+            <input type="hidden" id="p-id">
+            <label for="p-name">Product name *</label>
+            <input id="p-name" maxlength="100" required>
+            <div class="form-two-columns">
+              <div><label for="p-price">Your price (€) *</label><input id="p-price" type="number" min="0" step="0.01" required><small class="muted fee-line" id="p-fee-line">Type the price you want to receive. The store fee is added for you.</small></div>
+              <div><label for="p-category">Category</label><input id="p-category" maxlength="60"></div>
+              <div><label for="p-weight">Weight (kg) *</label><input id="p-weight" type="number" min="0.001" max="1000" step="0.001" inputmode="decimal" placeholder="e.g. 0.5" required><small class="muted">Used to choose a delivery partner who can carry it and to calculate the delivery price.</small></div>
+            </div>
+            <div class="form-two-columns dims-row">
+              <div><label for="p-length">Length (cm) *</label><input id="p-length" type="number" min="0.1" max="500" step="0.1" inputmode="decimal" required></div>
+              <div><label for="p-width">Width (cm) *</label><input id="p-width" type="number" min="0.1" max="500" step="0.1" inputmode="decimal" required></div>
+              <div><label for="p-height">Height (cm) *</label><input id="p-height" type="number" min="0.1" max="500" step="0.1" inputmode="decimal" required></div>
+            </div>
+            <p class="muted fee-line" id="p-size-line">Give the size of the package. The delivery price is calculated from the larger of the real weight and the size (length × width × height ÷ 5000).</p>
+            <div class="form-two-columns offer-fields">
+              <div class="restaurant-only" hidden><label for="p-prep">Preparation time (minutes)</label><input id="p-prep" type="number" min="0" max="240" step="1" inputmode="numeric" placeholder="e.g. 20"><small class="muted">The delivery partner is told when your dish will be ready, so he does not wait too long.</small></div>
+              <div><label for="p-discount">Offer: discount (%)</label><input id="p-discount" type="number" min="0" max="90" step="1" inputmode="numeric" placeholder="0"><small class="muted">0 = no offer. The customer sees the old price crossed out.</small></div>
+            </div>
+            <label class="visibility-control"><input id="p-available" type="checkbox" checked><span>Available now (untick when it is sold out)</span></label>
+            <label for="p-description">Description *</label>
+            <textarea id="p-description" rows="4" maxlength="1500" required></textarea>
+            <label for="p-image">Product photo</label>
+            <div class="photo-row">
+              <button type="button" class="small-button" id="p-camera" title="Take a photo with the camera">📷 Camera</button>
+              <button type="button" class="small-button" id="p-gallery">🖼 Choose a photo</button>
+              <input id="p-file-camera" type="file" accept="image/*" capture="environment" hidden>
+              <input id="p-file-gallery" type="file" accept="image/*" hidden>
+              <button type="button" class="small-button delete-button" id="p-photo-clear" hidden>Remove photo</button>
+            </div>
+            <img id="p-preview" class="photo-preview" alt="" hidden>
+            <label for="p-image">…or a picture link (URL)</label>
+            <input id="p-image" type="url" placeholder="https://example.com/photo.jpg">
+            <label class="visibility-control"><input id="p-visible" type="checkbox" checked><span>Show this product in the store</span></label>
+            <div class="admin-form-actions">
+              <button class="button button-teal" type="submit" id="p-save">Save product</button>
+              <button class="button button-secondary" type="button" id="p-cancel" hidden>Cancel edit</button>
+            </div>
+            <p id="p-message" class="form-message" role="status"></p>
+          </form>
+        </div>
+        <div class="admin-panel">
+          <div class="panel-heading"><h2>Your products</h2></div>
+          <div id="p-list" class="admin-product-list"></div>
+        </div>
+      </section>
+
+      <section class="admin-panel role-pane" id="pane-profile" hidden>
+        <div class="panel-heading"><h2>Shop details &amp; location</h2><p>Delivery partners and customers see this information.</p></div>
+        <form id="shop-form" novalidate>
+          <div class="form-two-columns">
+            <div><label for="f-business">Shop name *</label><input id="f-business" maxlength="100" required></div>
+            <div><label for="f-name">Your name *</label><input id="f-name" maxlength="100" required></div>
+          </div>
+          <div class="form-two-columns">
+            <div><label for="f-phone">Phone *</label><input id="f-phone" type="tel" maxlength="40" required></div>
+            <div><label for="f-country">Country *</label><input id="f-country" maxlength="80" required></div>
+          </div>
+          <div class="form-two-columns">
+            <div><label for="f-city">City *</label><input id="f-city" maxlength="80" required></div>
+            <div><label for="f-address">Address *</label><input id="f-address" maxlength="200" required></div>
+          </div>
+          <fieldset class="pay-fieldset"><legend>How customers may pay you</legend>
+            <label class="check-line"><input type="checkbox" id="f-cash" checked> Accept cash on delivery</label>
+            <label class="check-line"><input type="checkbox" id="f-pickup" checked> The customer may collect the order from me (no delivery partner)</label>
+            <label class="check-line"><input type="checkbox" id="f-self"> I deliver orders myself, for this price: <input id="f-self-fee" type="number" min="0" max="100000" step="1" value="0" style="width:110px" aria-label="Price of your own delivery"></label>
+            <label class="check-line"><input type="checkbox" id="f-credit" checked> Accept site credit</label>
+            <p class="field-help">The customer pays you directly. You confirm when the money arrives. The store's fee is then added to your balance when the order is delivered.</p>
+          </fieldset>
+          <label for="f-description">About your shop</label>
+          <textarea id="f-description" rows="3" maxlength="500"></textarea>
+          <div id="f-map"></div>
+          <p class="field-help"><button class="small-button" type="button" id="f-locate">Use my current location</button>
+            <span id="f-location" class="muted"></span></p>
+          <button class="button button-teal" type="submit">Save</button>
+          <p id="f-message" class="form-message" role="status"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo · <a href="privacy.html">Privacy</a> <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span></p>
+  </footer>
+</body>
+</html>

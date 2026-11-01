@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Hotels & lodging | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="adspots.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+    <script defer src="qrcode.js?v=v208"></script>
+  <script defer src="hotels.js?v=v208"></script>
+</head>
+<body data-push data-service="hotel">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span>
+    </a>
+    <nav aria-label="Main"><a href="services.html">Services</a><a href="index.html#products">Store</a>
+      <a class="cart-link" href="checkout.html">Cart (<span id="cart-count">0</span>)</a>
+      <a id="auth-link" href="account.html">My account</a>
+    </nav>
+  </header>
+
+  <main class="account-main doctors-main">
+    <div class="ad-slot ad-slot-top" data-ad-slot="hotels" hidden><div class="ad-list"></div></div>
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">HOTELS &amp; LODGING</span>
+        <h1>Book a room</h1>
+        <p>Choose a hotel and a room, then the day and hour you arrive and the day and hour you leave. You pay at the hotel.</p>
+        <p><a class="button button-secondary" href="partner.html?kind=hotel">Do you own a hotel? Join the site</a></p>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="dr-signin" hidden>
+      <h2>Sign in first</h2>
+      <p class="muted">Create a free account (or sign in) to book a room.</p>
+      <p><a class="button button-teal" href="login.html?next=hotels.html">Sign in</a>
+        <a class="button button-secondary" href="register.html?next=hotels.html">Create account</a></p>
+    </section>
+
+    <section class="admin-panel" id="dr-book">
+      <div class="panel-heading"><h2>New booking</h2></div>
+      <form id="dr-form" novalidate>
+        <label for="dr-doctor">Hotel *</label>
+        <select id="dr-doctor"><option value="">Loading…</option></select>
+        <div class="form-two-columns">
+          <div><label for="dr-first">First name *</label><input id="dr-first" maxlength="60" autocomplete="given-name" required></div>
+          <div><label for="dr-last">Last name *</label><input id="dr-last" maxlength="60" autocomplete="family-name" required></div>
+        </div>
+        <div class="form-two-columns">
+          <div><label for="dr-phone">Phone *</label><input id="dr-phone" type="tel" maxlength="40" autocomplete="tel" required></div>
+          <div><label for="dr-guests">Guests *</label><input id="dr-guests" type="number" min="1" max="20" value="1" required></div>
+        </div>
+        <div class="form-two-columns">
+          <div><label for="dr-day">Check-in day *</label><input id="dr-day" type="date" required></div>
+          <div><label for="dr-time">Arrival hour *</label><input id="dr-time" type="time" value="14:00" required></div>
+        </div>
+        <div class="form-two-columns">
+          <div><label for="dr-outday">Check-out day *</label><input id="dr-outday" type="date" required></div>
+          <div><label for="dr-outtime">Leaving hour *</label><input id="dr-outtime" type="time" value="12:00" required></div>
+        </div>
+        <div id="dr-rooms-box" hidden>
+          <label>Choose a room *</label>
+          <div id="dr-rooms" class="style-pick" role="radiogroup" aria-label="Rooms"></div>
+        </div>
+        <p id="dr-rooms-note" class="muted" role="status"></p>
+        <label for="dr-reason">Notes for the hotel (optional)</label>
+        <input id="dr-reason" maxlength="300">
+        <button class="button button-teal" type="submit">Book the room</button>
+        <p id="dr-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section class="admin-panel" id="dr-mine" hidden>
+      <div class="panel-heading"><h2>My bookings</h2><p>Your stays appear here. You pay at the hotel.</p></div>
+      <div id="dr-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo</p>
+    <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+</body>
+</html>

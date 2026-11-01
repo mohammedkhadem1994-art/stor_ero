@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accounts | Plazavo</title>
+  <meta name="description" content="The account types of Plazavo and how to register for each one.">
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="pane-focus.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">P</span><span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span></a>
+    <nav aria-label="Main"><a href="index.html">Store</a><a id="auth-link" href="login.html">Sign in</a><a id="register-link" href="register.html">Create account</a></nav>
+  </header>
+
+  <main class="checkout-main accounts-guide">
+    <section class="panel">
+      <p class="eyebrow">ACCOUNTS</p>
+      <h1>Accounts on Plazavo</h1>
+      <p>Everybody starts with a customer account. Sellers, restaurants, pharmacies, doctors, travel agencies, taxi drivers, delivery partners, supervisors and deans are customer accounts that were given an extra role.</p>
+      <nav class="guide-index" aria-label="Account types">
+        <a href="#customer">Customer</a><a href="#seller">Seller</a><a href="#providers">Restaurant, pharmacy and services</a><a href="#courier">Delivery partner</a><a href="#supervisor">Supervisor</a><a href="#dean">Dean</a><a href="#admin">Owner (admin)</a>
+      </nav>
+    </section>
+
+    <section class="panel" id="customer">
+      <h2>Customer account</h2>
+      <p>Buy products from independent sellers and follow your order until it arrives.</p>
+      <p class="muted"><strong>How to start:</strong> Create an account with your email, phone and ID card, then verify your email.</p>
+      <p><a class="button button-teal" href="register.html">Create a customer account</a> <a class="button button-secondary" href="login.html">I already have one</a></p>
+    </section>
+
+    <section class="panel" id="seller">
+      <h2>Seller account</h2>
+      <p>Sell your own products in the store and receive the orders directly.</p>
+      <p class="muted"><strong>How to start:</strong> Create a customer account, then press Work with us: seller / delivery.</p>
+      <p><a class="button button-teal" href="partner.html">Apply as a seller</a></p>
+    </section>
+
+    <section class="panel" id="providers">
+      <h2>Restaurant, pharmacy, doctor, barber, hotel, travel agency or taxi account</h2>
+      <p>Restaurants publish their dishes with prices, offers and preparation time. Doctors, barbers, hotels, travel agencies and taxi drivers receive appointments, room bookings, ticket requests or ride requests on a schedule they control and answer them from their own page.</p>
+      <p>
+        <a class="button button-teal" href="partner.html?kind=restaurant">Join as a restaurant</a>
+        <a class="button button-teal" href="partner.html?kind=pharmacy">Join as a pharmacy</a>
+        <a class="button button-teal" href="partner.html?kind=doctor">Join as a doctor</a>
+        <a class="button button-teal" href="partner.html?kind=agency">Join as a travel agency</a>
+        <a class="button button-teal" href="partner.html?kind=taxi">Join as a taxi driver</a>
+        <a class="button button-teal" href="partner.html?kind=barber">Join as a barber</a>
+        <a class="button button-teal" href="partner.html?kind=hotel">Join as a hotel</a>
+      </p>
+    </section>
+
+    <section class="panel" id="courier">
+      <h2>Delivery partner account</h2>
+      <p>Pick up parcels from sellers close to you, bring them to customers and set your own prices.</p>
+      <p class="muted"><strong>How to start:</strong> Create a customer account, then press Work with us: seller / delivery.</p>
+      <p><a class="button button-teal" href="partner.html">Apply as a delivery partner</a></p>
+    </section>
+
+    <section class="panel" id="supervisor">
+      <h2>Supervisor account</h2>
+      <p>A supervisor watches the marketplace and brings in new sellers and delivery partners. This account is given only by the store owner.</p>
+      <p class="muted"><strong>How to start:</strong> The owner appoints you from your customer account.</p>
+      <p></p>
+    </section>
+
+    <section class="panel" id="dean">
+      <h2>Dean account</h2>
+      <p>A dean leads a group of supervisors: he approves the sellers and delivery partners they bring in, follows their debts and keeps a share of the fees. This account is given only by the store owner.</p>
+      <p class="muted"><strong>How to start:</strong> The owner appoints you from your customer account.</p>
+      <p></p>
+    </section>
+
+    <section class="panel" id="admin">
+      <h2>Owner (admin) account</h2>
+      <p>The store owner manages the whole marketplace. This account is created by the owner only.</p>
+      <p class="muted"><strong>How to start:</strong> Not open to the public.</p>
+      <p></p>
+    </section>
+
+    <p class="muted">The full guide of each account, with pictures, is in <a href="guide.html">How it works</a>.</p>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark">P</span><span>Plazavo<small>Your online marketplace</small></span></a>
+    <span>© <span data-year></span> Plazavo</span>
+    <a href="privacy.html">Privacy</a> <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+  <script>document.querySelectorAll("[data-year]").forEach(e => { e.textContent = new Date().getFullYear(); });</script>
+</body>
+</html>

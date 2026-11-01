@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Services | Plazavo</title>
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-functions-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+    <script defer src="services.js?v=v208"></script>
+</head>
+<body data-push>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span>
+    </a>
+    <nav aria-label="Main"><a href="index.html#products">Store</a>
+      <a class="cart-link" href="checkout.html">Cart (<span id="cart-count">0</span>)</a>
+      <a id="auth-link" href="account.html">My account</a>
+    </nav>
+  </header>
+
+  <main class="account-main services-main">
+    <section class="admin-heading">
+      <div>
+        <span class="eyebrow">SERVICES</span>
+        <h1>What do you need today?</h1>
+        <p>One account for everything: shop, see a doctor, book a travel ticket or rent a taxi.</p>
+      </div>
+    </section>
+
+    <div class="service-grid">
+      <a class="service-card service-shop" href="index.html#products">
+        <span class="service-icon" aria-hidden="true">🛍️</span>
+        <strong>Shop</strong>
+        <small>Buy from sellers near you, delivered to your door.</small>
+      </a>
+      <a class="service-card service-doctor" href="doctors.html">
+        <span class="service-icon" aria-hidden="true">🩺</span>
+        <strong>Doctor appointment</strong>
+        <small>Choose a doctor and the day. He answers with the hour and can send your prescription.</small>
+      </a>
+      <a class="service-card service-travel" href="travel.html">
+        <span class="service-icon" aria-hidden="true">✈️</span>
+        <strong>Travel ticket</strong>
+        <small>Ask a travel agency for a ticket: it answers with the price and sends your ticket.</small>
+      </a>
+      <a class="service-card service-taxi" href="taxi.html">
+        <span class="service-icon" aria-hidden="true">🚕</span>
+        <strong>Taxi</strong>
+        <small>Ask a taxi driver for a ride and get his price and pick-up hour.</small>
+      </a>
+      <a class="service-card service-barber" href="barbers.html">
+        <span class="service-icon" aria-hidden="true">💈</span>
+        <strong>Barber</strong>
+        <small>Choose a barbershop and take a free hour of the day.</small>
+      </a>
+      <a class="service-card service-hotel" href="hotels.html">
+        <span class="service-icon" aria-hidden="true">🏨</span>
+        <strong>Hotels &amp; lodging</strong>
+        <small>Choose a hotel and a room, then the day and the hour you arrive and leave.</small>
+      </a>
+      <a class="service-card service-credit" id="svc-credit" href="wallet.html" hidden>
+        <span class="service-icon" aria-hidden="true">💳</span>
+        <strong>My credit</strong>
+        <small>Your account balance: pay orders and see the history.</small>
+      </a>
+    </div>
+    <section class="panel join-services" id="join-services">
+      <h2>Offer your own service</h2>
+      <p>Are you a doctor, a barber, a hotel, a travel agency or a taxi driver? Open a provider account: you get your own page to receive and answer the requests of customers. An administrator approves it first.</p>
+      <p>
+        <a class="button button-teal" href="partner.html?kind=doctor">Join as a doctor</a>
+        <a class="button button-teal" href="partner.html?kind=agency">Join as a travel agency</a>
+        <a class="button button-teal" href="partner.html?kind=taxi">Join as a taxi driver</a>
+        <a class="button button-teal" href="partner.html?kind=barber">Join as a barber</a>
+        <a class="button button-teal" href="partner.html?kind=hotel">Join as a hotel</a>
+        <a class="button button-secondary" href="partner.html?kind=shop">Join as a seller</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo</p>
+    <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+</body>
+</html>

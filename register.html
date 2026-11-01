@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create account | Plazavo</title>
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Plazavo">
+  <meta property="og:title" content="أنشئ حسابك الآن | Join Plazavo"><meta property="og:description" content="Create your account and start shopping from local sellers. أنشئ حسابك وابدأ التسوق.">
+  <meta property="og:image" content="https://your-domain.example/og-join.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Plazavo: انضم الآن / Join now">
+  <meta property="og:url" content="https://your-domain.example/register.html">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="أنشئ حسابك الآن | Join Plazavo"><meta name="twitter:description" content="Create your account and start shopping from local sellers. أنشئ حسابك وابدأ التسوق."><meta name="twitter:image" content="https://your-domain.example/og-join.jpg">
+  <link rel="stylesheet" href="styles.css?v=v208">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#121212">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="MK Store">
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script defer src="firebase-config.js?v=v208"></script>
+  <script defer src="edition.js?v=v208"></script>
+  <script defer src="i18n-data.js?v=v208"></script>
+  <script defer src="i18n.js?v=v208"></script>
+  <script defer src="push-kinds.js?v=v208"></script>
+  <script defer src="store.js?v=v208"></script>
+  <script defer src="sidebar.js?v=v208"></script>
+  <script defer src="tables.js?v=v208"></script>
+  <script defer src="opening.js?v=v208"></script>
+  <script defer src="auth.js?v=v208"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">P</span>
+      <span>Plazavo<small>MARKETPLACE · SELLERS · DELIVERY</small></span>
+    </a>
+    <nav aria-label="Main"><a href="guide.html">How it works</a><a href="login.html">Sign in</a><a href="index.html">Store</a></nav>
+  </header>
+
+  <main class="auth-container">
+    <section class="auth-card">
+      <span class="eyebrow">JOIN PLAZAVO</span>
+      <h1>Create your account</h1>
+      <p class="auth-intro">Create a buyer account to get started.</p>
+
+      <form id="register-form">
+        <label for="register-email">Email address</label>
+        <input id="register-email" type="email" autocomplete="email" required>
+
+        <label for="register-password">Create password</label>
+        <input id="register-password" type="password" minlength="8" autocomplete="new-password" required>
+        <p class="field-help">Use at least 8 characters for this prototype.</p>
+
+        <label for="register-confirm">Confirm password</label>
+        <input id="register-confirm" type="password" minlength="8" autocomplete="new-password" required>
+
+        <div id="register-kyc"></div>
+        <button class="button button-teal auth-submit" type="submit">Create account</button>
+        <p id="register-message" class="form-message" role="status"></p>
+      </form>
+
+      <p class="auth-switch">Already registered? <a href="login.html">Sign in</a></p>
+      <p class="auth-back"><a href="index.html">← Return to the store</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span data-year></span> Plazavo</p>
+    <a class="footer-contact" href="mailto:contact@your-domain.example">✉ contact@your-domain.example</a> <span class="footer-contact">📍 Europe</span>
+  </footer>
+</body>
+</html>
